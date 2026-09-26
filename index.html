@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Wed Studios — Luxury wedding photography and cinematic films. Forever Begins With a Beautiful Frame.">
+<title>Wed Studios | Wedding Photography & Films</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0909;--card:#131010;--text:#f7f1e9;--muted:#aaa09a;--gold:#d7b37a;--line:rgba(255,255,255,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}.container{width:min(1180px,92%);margin:auto}
+header{position:fixed;top:0;left:0;width:100%;z-index:50;background:rgba(10,9,9,.55);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between}.logo{font-family:"Cormorant Garamond";font-size:30px;letter-spacing:2px}.logo span{color:var(--gold)}
+.navlinks{display:flex;gap:30px;font-size:13px;text-transform:uppercase;letter-spacing:1.5px}.navlinks a:hover{color:var(--gold)}
+.menu{display:none;background:none;border:0;color:#fff;font-size:28px}
+.hero{min-height:100vh;display:grid;place-items:center;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(0,0,0,.25),#0a0909 96%),url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2200&q=85") center/cover}
+.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,transparent 0,rgba(0,0,0,.25) 45%,rgba(0,0,0,.7) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;padding-top:70px}.eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:5px;font-size:11px;margin-bottom:20px}
+h1,h2,h3{font-family:"Cormorant Garamond",serif;font-weight:500}.hero h1{font-size:clamp(60px,10vw,125px);line-height:.82;letter-spacing:-2px}.hero p{max-width:620px;margin:28px auto;color:#ddd;font-size:16px}.btn{display:inline-flex;padding:14px 25px;border:1px solid var(--gold);color:#fff;text-transform:uppercase;letter-spacing:2px;font-size:11px;transition:.3s}.btn:hover{background:var(--gold);color:#111}
+section{padding:110px 0}.section-head{margin-bottom:50px}.section-head .eyebrow{margin-bottom:10px}.section-head h2{font-size:clamp(42px,6vw,70px);line-height:1}.section-head p{color:var(--muted);max-width:600px;margin-top:16px}
+.intro{text-align:center}.intro p{max-width:800px;margin:25px auto;color:#c4bcb6;font-size:18px}.intro h2{font-size:clamp(45px,6vw,72px)}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.service{padding:35px;background:var(--card);border:1px solid var(--line);min-height:240px;transition:.35s}.service:hover{transform:translateY(-6px);border-color:rgba(215,179,122,.45)}.service .num{color:var(--gold);font-size:12px;letter-spacing:2px}.service h3{font-size:32px;margin:45px 0 10px}.service p{color:var(--muted);font-size:14px}
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}.gallery figure{overflow:hidden;min-height:320px}.gallery figure:nth-child(1){grid-column:span 7}.gallery figure:nth-child(2){grid-column:span 5}.gallery figure:nth-child(3){grid-column:span 4}.gallery figure:nth-child(4){grid-column:span 8}.gallery img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.85);transition:.6s}.gallery figure:hover img{transform:scale(1.05);filter:saturate(1)}
+.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.package{border:1px solid var(--line);padding:35px;background:#100e0e}.package.featured{border-color:var(--gold)}.package h3{font-size:36px}.price{font-size:28px;color:var(--gold);margin:18px 0}.package ul{list-style:none;color:var(--muted);font-size:14px}.package li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.quote{text-align:center;background:#111010}.quote blockquote{font-family:"Cormorant Garamond";font-size:clamp(32px,5vw,58px);line-height:1.1;max-width:900px;margin:auto}.quote cite{display:block;color:var(--gold);font-style:normal;font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-top:25px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:60px}.contact h2{font-size:65px;line-height:.95}.contact p{color:var(--muted);margin:20px 0 30px}.contact-box{border:1px solid var(--line);padding:35px;background:var(--card)}.contact-row{padding:18px 0;border-bottom:1px solid var(--line)}.contact-row small{display:block;color:var(--gold);font-size:10px;text-transform:uppercase;letter-spacing:2px}.contact-row a{font-size:18px}
+footer{border-top:1px solid var(--line);padding:30px 0;color:#888;font-size:12px}.footer-inner{display:flex;justify-content:space-between}
+.reveal{opacity:0;transform:translateY(25px);transition:.8s}.reveal.show{opacity:1;transform:none}
+@media(max-width:800px){.navlinks{display:none;position:absolute;top:76px;left:0;width:100%;padding:25px;background:#0b0a0a;flex-direction:column}.navlinks.open{display:flex}.menu{display:block}.services,.packages,.contact{grid-template-columns:1fr}.gallery figure,.gallery figure:nth-child(n){grid-column:span 12;min-height:360px}.contact h2{font-size:52px}.footer-inner{flex-direction:column;gap:8px}}
+</style>
+</head>
+<body>
+<header><div class="container nav"><a class="logo" href="#">WED <span>STUDIOS</span></a><button class="menu" aria-label="Menu">☰</button><nav class="navlinks"><a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#packages">Packages</a><a href="#contact">Contact</a></nav></div></header>
+
+<main>
+<section class="hero" id="home"><div class="hero-content reveal"><div class="eyebrow">Wedding Photography • Films • Stories</div><h1>Forever Begins<br>With A Beautiful Frame</h1><p>We turn fleeting wedding moments into timeless photographs and cinematic films — crafted with emotion, elegance and intention.</p><a class="btn" href="#contact">Let's Create Your Story</a></div></section>
+
+<section id="about"><div class="container intro reveal"><div class="eyebrow">The Art Of Storytelling</div><h2>Every Love Story<br>Deserves To Be Remembered.</h2><p>Wed Studios is a wedding photography and cinematic filmmaking studio dedicated to documenting the moments that matter. From quiet glances to grand celebrations, we create imagery that feels authentic today and timeless tomorrow.</p><a class="btn" href="#portfolio">Explore Our Work</a></div></section>
+
+<section id="services"><div class="container"><div class="section-head reveal"><div class="eyebrow">What We Do</div><h2>Our Services</h2><p>Thoughtfully crafted coverage for every chapter of your celebration.</p></div><div class="services">
+<div class="service reveal"><span class="num">01 / PHOTO</span><h3>Candid Photography</h3><p>Unscripted emotions, genuine connections and the little moments you may have missed.</p></div>
+<div class="service reveal"><span class="num">02 / FILM</span><h3>Cinematic Films</h3><p>Emotion-led wedding films with cinematic visuals, sound and storytelling.</p></div>
+<div class="service reveal"><span class="num">03 / PRE-WEDDING</span><h3>Pre-Wedding Stories</h3><p>Editorial, intimate and cinematic sessions designed around your personality.</p></div>
+<div class="service reveal"><span class="num">04 / TRADITIONAL</span><h3>Traditional Coverage</h3><p>Complete documentation of rituals, family moments and every important ceremony.</p></div>
+<div class="service reveal"><span class="num">05 / DRONE</span><h3>Aerial Films</h3><p>Grand establishing shots that give your wedding film a cinematic scale.</p></div>
+<div class="service reveal"><span class="num">06 / ALBUM</span><h3>Luxury Albums</h3><p>Fine-art wedding albums designed to preserve your memories for generations.</p></div>
+</div></div></section>
+
+<section id="portfolio"><div class="container"><div class="section-head reveal"><div class="eyebrow">Selected Stories</div><h2>Frames We Love</h2></div><div class="gallery">
+<figure class="reveal"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85" alt="Wedding couple"></figure>
+<figure class="reveal"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1000&q=85" alt="Indian wedding"></figure>
+<figure class="reveal"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=85" alt="Wedding celebration"></figure>
+<figure class="reveal"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=1400&q=85" alt="Wedding ceremony"></figure>
+</div></div></section>
+
+<section id="packages"><div class="container"><div class="section-head reveal"><div class="eyebrow">Investment</div><h2>Wedding Packages</h2><p>Starting packages — customize your coverage according to your celebration.</p></div><div class="packages">
+<div class="package reveal"><div class="eyebrow">Essential</div><h3>Classic</h3><div class="price">₹30,000+</div><ul><li>Candid Photography</li><li>Traditional Photography</li><li>Single Function Coverage</li><li>Online Gallery</li></ul></div>
+<div class="package featured reveal"><div class="eyebrow">Most Loved</div><h3>Signature</h3><div class="price">₹55,000+</div><ul><li>Candid Photography</li><li>Cinematic Film</li><li>Traditional Photo + Video</li><li>Drone Coverage</li><li>Premium Online Gallery</li></ul></div>
+<div class="package reveal"><div class="eyebrow">Luxury</div><h3>Legacy</h3><div class="price">₹90,000+</div><ul><li>Complete Wedding Coverage</li><li>Cinematic Wedding Film</li><li>Pre-Wedding Session</li><li>Drone Coverage</li><li>Luxury Wedding Album</li></ul></div>
+</div></div></section>
+
+<section class="quote"><div class="container reveal"><blockquote>“We don't just capture how your wedding looked. We capture how it felt.”</blockquote><cite>— Wed Studios</cite></div></section>
+
+<section id="contact"><div class="container contact"><div class="reveal"><div class="eyebrow">Let's Talk</div><h2>Your Story.<br>Our Frame.</h2><p>Planning your wedding in Banaras, Varanasi or anywhere in India? Tell us about your date, venue and vision.</p><a class="btn" href="https://wa.me/919999999999?text=Hi%20Wed%20Studios%2C%20I%27d%20like%20to%20discuss%20my%20wedding." target="_blank">Chat On WhatsApp</a></div><div class="contact-box reveal">
+<div class="contact-row"><small>WhatsApp</small><a href="https://wa.me/919999999999" target="_blank">+91 99999 99999</a></div>
+<div class="contact-row"><small>Email</small><a href="mailto:hello@westudios.in">hello@westudios.in</a></div>
+<div class="contact-row"><small>Instagram</small><a href="https://instagram.com/" target="_blank">@wedstudios</a></div>
+<div class="contact-row"><small>Based In</small><span>Varanasi • India</span></div>
+</div></div></section>
+</main>
+
+<footer><div class="container footer-inner"><span>© 2026 Wed Studios. All rights reserved.</span><span>Forever Begins With A Beautiful Frame.</span></div></footer>
+<script>
+const menu=document.querySelector('.menu'), nav=document.querySelector('.navlinks');
+menu.addEventListener('click',()=>nav.classList.toggle('open'));
+document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
