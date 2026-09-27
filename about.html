@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>About Us | Wed Studios</title>
+
+  <meta name="description"
+        content="Wed Studios is a luxury wedding photography and cinematography studio based in Varanasi, creating timeless wedding stories through cinematic photography and films.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #08080b;
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ---------- HEADER ---------- */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(8, 8, 11, 0.75);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #fff;
+    }
+
+    .logo span {
+      color: #c8a96b;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #c8a96b;
+    }
+
+    /* ---------- HERO ---------- */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          rgba(0,0,0,0.58),
+          rgba(0,0,0,0.82)
+        ),
+        url("images/about-hero.jpg") center/cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      padding: 30px;
+      animation: fadeUp 1.2s ease;
+    }
+
+    .small-title {
+      color: #c8a96b;
+      font-size: 13px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(55px, 9vw, 110px);
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #c8a96b;
+      font-style: italic;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: #ddd;
+      font-size: 17px;
+    }
+
+    /* ---------- INTRO ---------- */
+
+    .section {
+      padding: 120px 8%;
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .intro-image {
+      position: relative;
+    }
+
+    .intro-image img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      display: block;
+      border-radius: 3px;
+    }
+
+    .intro-image::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 1px solid #c8a96b;
+      left: 18px;
+      top: 18px;
+      z-index: -1;
+    }
+
+    .intro-content .label {
+      color: #c8a96b;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 18px;
+    }
+
+    .intro-content h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(40px, 5vw, 65px);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 25px;
+    }
+
+    .intro-content h2 span {
+      color: #c8a96b;
+      font-style: italic;
+    }
+
+    .intro-content p {
+      color: #bdbdbd;
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+
+    /* ---------- STORY ---------- */
+
+    .story {
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(92, 55, 160, 0.22),
+          transparent 40%
+        ),
+        #0d0c11;
+    }
+
+    .story-inner {
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .story-inner h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(42px, 6vw, 75px);
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
+
+    .story-inner h2 span {
+      color: #c8a96b;
+      font-style: italic;
+    }
+
+    .story-inner p {
+      color: #c2c2c2;
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    /* ---------- VALUES ---------- */
+
+    .values {
+      max-width: 1250px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .section-heading {
+      margin-bottom: 65px;
+    }
+
+    .section-heading .label {
+      color: #c8a96b;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+
+    .section-heading h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(42px, 5vw, 65px);
+      font-weight: 400;
+    }
+
+    .section-heading h2 span {
+      color: #c8a96b;
+      font-style: italic;
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .value-card {
+      padding: 45px 30px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.025);
+      transition: 0.4s;
+    }
+
+    .value-card:hover {
+      transform: translateY(-8px);
+      border-color: #c8a96b;
+    }
+
+    .icon {
+      font-size: 35px;
+      color: #c8a96b;
+      margin-bottom: 20px;
+    }
+
+    .value-card h3 {
+      font-family: Georgia, serif;
+      font-size: 25px;
+      margin-bottom: 15px;
+      font-weight: 400;
+    }
+
+    .value-card p {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    /* ---------- NUMBERS ---------- */
+
+    .numbers {
+      background: #050507;
+    }
+
+    .number-grid {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+      gap: 30px;
+    }
+
+    .number h3 {
+      font-size: 45px;
+      color: #c8a96b;
+      font-family: Georgia, serif;
+      font-weight: 400;
+    }
+
+    .number p {
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 11px;
+      margin-top: 5px;
+    }
+
+    /* ---------- CTA ---------- */
+
+    .cta {
+      min-height: 550px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      background:
+        linear-gradient(
+          rgba(0,0,0,0.7),
+          rgba(0,0,0,0.75)
+        ),
+        url("images/cta.jpg") center/cover no-repeat;
+    }
+
+    .cta-content {
+      max-width: 750px;
+    }
+
+    .cta h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(45px, 6vw, 75px);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 25px;
+    }
+
+    .cta h2 span {
+      color: #c8a96b;
+      font-style: italic;
+    }
+
+    .cta p {
+      color: #ccc;
+      margin-bottom: 35px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 35px;
+      border: 1px solid #c8a96b;
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #c8a96b;
+      color: #08080b;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      padding: 35px 8%;
+      text-align: center;
+      background: #050507;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    footer .footer-logo {
+      font-size: 23px;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+
+    footer .footer-logo span {
+      color: #c8a96b;
+    }
+
+    footer p {
+      color: #777;
+      font-size: 12px;
+    }
+
+    /* ---------- ANIMATION ---------- */
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ---------- MOBILE ---------- */
+
+    @media(max-width: 850px) {
+
+      header {
+        padding: 18px 5%;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .section {
+        padding: 80px 6%;
+      }
+
+      .intro {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .intro-image img {
+        height: 450px;
+      }
+
+      .value-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .number-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 60px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+    }
+
+    @media(max-width: 500px) {
+
+      .number-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 15px;
+      }
+
+      .number h3 {
+        font-size: 35px;
+      }
+
+      .intro-image::after {
+        left: 10px;
+        top: 10px;
+      }
+
+      .cta {
+        min-height: 500px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="logo">
+      WED<span>STUDIOS</span>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="small-title">
+        About Wed Studios
+      </div>
+
+      <h1>
+        We Capture<br>
+        <span>Love Stories.</span>
+      </h1>
+
+      <p>
+        Wedding photography and cinematography crafted with emotion,
+        elegance and a cinematic eye.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- INTRO -->
+
+  <section class="section">
+
+    <div class="intro">
+
+      <div class="intro-image">
+        <!-- Replace this image -->
+        <img src="images/about-team.jpg" alt="Wed Studios Wedding Photography">
+      </div>
+
+      <div class="intro-content">
+
+        <div class="label">
+          Who We Are
+        </div>
+
+        <h2>
+          More Than<br>
+          <span>Just Photographs.</span>
+        </h2>
+
+        <p>
+          At Wed Studios, we believe a wedding is not just an event.
+          It is a collection of emotions, people, traditions and
+          unforgettable moments.
+        </p>
+
+        <p>
+          Based in Varanasi, we create wedding photographs and films
+          that feel natural, cinematic and timeless. From the nervous
+          smile before the ceremony to the tears, laughter and chaos
+          on the dance floor — we are there to preserve every feeling.
+        </p>
+
+        <p>
+          Our approach combines documentary storytelling with
+          cinematic visuals, creating memories that you can experience
+          again and again.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- OUR STORY -->
+
+  <section class="section story">
+
+    <div class="story-inner">
+
+      <div class="small-title">
+        Our Philosophy
+      </div>
+
+      <h2>
+        Every Couple Has A<br>
+        <span>Story Worth Telling.</span>
+      </h2>
+
+      <p>
+        We don't believe in simply photographing poses.
+        We believe in photographing people — their connection,
+        their emotions and the little moments that make their
+        relationship unique.
+      </p>
+
+      <br>
+
+      <p>
+        Our goal is simple: years from now, when you look back
+        at your wedding photographs and films, we want you to
+        feel exactly what you felt on that day.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- VALUES -->
+
+  <section class="section">
+
+    <div class="values">
+
+      <div class="section-heading">
+
+        <div class="label">
+          What We Believe
+        </div>
+
+        <h2>
+          Our <span>Approach</span>
+        </h2>
+
+      </div>
+
+
+      <div class="value-grid">
+
+        <div class="value-card">
+
+          <div class="icon">✦</div>
+
+          <h3>Authentic</h3>
+
+          <p>
+            Real emotions. Real laughter. Real moments.
+            We focus on capturing your wedding naturally,
+            without forcing every moment.
+          </p>
+
+        </div>
+
+
+        <div class="value-card">
+
+          <div class="icon">◈</div>
+
+          <h3>Cinematic</h3>
+
+          <p>
+            From composition and movement to light and colour,
+            we create visuals inspired by cinematic storytelling.
+          </p>
+
+        </div>
+
+
+        <div class="value-card">
+
+          <div class="icon">♡</div>
+
+          <h3>Timeless</h3>
+
+          <p>
+            Trends change, but emotions don't.
+            We create photographs and films designed to remain
+            meaningful for generations.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NUMBERS -->
+
+  <section class="section numbers">
+
+    <div class="number-grid">
+
+      <div class="number">
+        <h3>100+</h3>
+        <p>Stories Captured</p>
+      </div>
+
+      <div class="number">
+        <h3>50+</h3>
+        <p>Happy Couples</p>
+      </div>
+
+      <div class="number">
+        <h3>10+</h3>
+        <p>Wedding Destinations</p>
+      </div>
+
+      <div class="number">
+        <h3>∞</h3>
+        <p>Beautiful Memories</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <div class="cta-content">
+
+      <div class="small-title">
+        Let's Create Something Beautiful
+      </div>
+
+      <h2>
+        Your Story.<br>
+        <span>Our Frame.</span>
+      </h2>
+
+      <p>
+        Planning your wedding in Varanasi or anywhere across India?
+        Let's turn your moments into memories that last forever.
+      </p>
+
+      <a href="contact.html" class="btn">
+        Start Your Story
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-logo">
+      WED<span>STUDIOS</span>
+    </div>
+
+    <p>
+      © 2026 Wed Studios · Varanasi, India
+    </p>
+
+  </footer>
+
+
+</body>
+</html>
