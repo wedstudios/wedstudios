@@ -1,0 +1,1542 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gallery | Wed Studios</title>
+
+<meta name="description"
+content="Explore wedding photography, pre-wedding, engagement and birthday stories by Wed Studios, Varanasi.">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#07070a;
+    color:#fff;
+    font-family:Arial, Helvetica, sans-serif;
+    overflow-x:hidden;
+}
+
+button{
+    font-family:inherit;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    padding:20px 6%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:rgba(7,7,10,.75);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    font-family:Georgia,serif;
+    font-size:25px;
+    letter-spacing:3px;
+}
+
+.logo span{
+    color:#c9a76a;
+}
+
+nav{
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    font-size:13px;
+    letter-spacing:1px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#c9a76a;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:65vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    padding:140px 20px 80px;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.65),
+        rgba(0,0,0,.88)
+    ),
+    url("images/gallery-hero.jpg") center/cover;
+}
+
+.hero-content{
+    max-width:850px;
+}
+
+.hero-label{
+    color:#c9a76a;
+    text-transform:uppercase;
+    letter-spacing:5px;
+    font-size:12px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-family:Georgia,serif;
+    font-size:clamp(55px,8vw,100px);
+    font-weight:400;
+    line-height:1;
+}
+
+.hero h1 span{
+    color:#c9a76a;
+    font-style:italic;
+}
+
+.hero p{
+    max-width:600px;
+    margin:25px auto 0;
+    color:#bbb;
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   CATEGORY FILTER
+========================================================= */
+
+.gallery-wrapper{
+    width:92%;
+    max-width:1500px;
+    margin:auto;
+    padding:80px 0;
+}
+
+.filters{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:50px;
+}
+
+.filter-btn{
+    border:1px solid rgba(255,255,255,.18);
+    background:transparent;
+    color:#aaa;
+
+    padding:12px 25px;
+
+    cursor:pointer;
+
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-size:11px;
+
+    transition:.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active{
+    background:#c9a76a;
+    color:#08080a;
+    border-color:#c9a76a;
+}
+
+
+/* =========================================================
+   GALLERY GRID
+========================================================= */
+
+.gallery{
+    columns:4 280px;
+    column-gap:18px;
+}
+
+.gallery-item{
+    position:relative;
+
+    margin-bottom:18px;
+
+    break-inside:avoid;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    border-radius:2px;
+
+    background:#111;
+
+    opacity:0;
+    transform:translateY(20px);
+
+    animation:galleryIn .7s forwards;
+}
+
+.gallery-item img{
+    width:100%;
+    display:block;
+
+    transition:
+        transform .7s cubic-bezier(.2,.8,.2,1),
+        filter .5s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.08);
+    filter:brightness(.6);
+}
+
+
+/* =========================================================
+   HOVER OVERLAY
+========================================================= */
+
+.gallery-overlay{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    linear-gradient(
+        to top,
+        rgba(0,0,0,.75),
+        transparent 65%
+    );
+
+    opacity:0;
+
+    transition:.4s;
+}
+
+.gallery-item:hover .gallery-overlay{
+    opacity:1;
+}
+
+.view-icon{
+    width:55px;
+    height:55px;
+
+    border:1px solid rgba(255,255,255,.8);
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+
+    transform:scale(.7);
+
+    transition:.4s;
+}
+
+.gallery-item:hover .view-icon{
+    transform:scale(1);
+}
+
+
+/* =========================================================
+   IMAGE TITLE
+========================================================= */
+
+.gallery-title{
+    position:absolute;
+    left:20px;
+    bottom:18px;
+
+    z-index:2;
+
+    opacity:0;
+    transform:translateY(10px);
+
+    transition:.4s;
+}
+
+.gallery-item:hover .gallery-title{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.gallery-title strong{
+    display:block;
+    font-family:Georgia,serif;
+    font-size:19px;
+}
+
+.gallery-title small{
+    color:#c9a76a;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   LOAD MORE
+========================================================= */
+
+.load-more-wrapper{
+    text-align:center;
+    padding:60px 0 20px;
+}
+
+#loadMore{
+    padding:15px 40px;
+
+    background:transparent;
+
+    border:1px solid #c9a76a;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-size:11px;
+
+    transition:.3s;
+}
+
+#loadMore:hover{
+    background:#c9a76a;
+    color:#050507;
+}
+
+#loadMore.loading{
+    opacity:.5;
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   AJAX LOADING
+========================================================= */
+
+.ajax-loader{
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:10px;
+
+    padding:30px;
+}
+
+.ajax-loader.show{
+    display:flex;
+}
+
+.spinner{
+    width:22px;
+    height:22px;
+
+    border:2px solid rgba(255,255,255,.2);
+    border-top-color:#c9a76a;
+
+    border-radius:50%;
+
+    animation:spin .8s linear infinite;
+}
+
+.ajax-loader span{
+    color:#aaa;
+    font-size:12px;
+    letter-spacing:1px;
+}
+
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+.lightbox{
+    position:fixed;
+
+    inset:0;
+
+    z-index:9999;
+
+    background:rgba(0,0,0,.95);
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:40px;
+}
+
+.lightbox.active{
+    display:flex;
+}
+
+.lightbox-image{
+    max-width:90vw;
+    max-height:85vh;
+
+    object-fit:contain;
+
+    box-shadow:
+        0 20px 80px rgba(0,0,0,.8);
+
+    animation:popup .4s ease;
+}
+
+
+/* =========================================================
+   LIGHTBOX BUTTONS
+========================================================= */
+
+.close-lightbox{
+    position:absolute;
+
+    top:25px;
+    right:35px;
+
+    width:45px;
+    height:45px;
+
+    border:1px solid rgba(255,255,255,.3);
+
+    background:rgba(0,0,0,.4);
+
+    color:#fff;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:22px;
+}
+
+.lightbox-prev,
+.lightbox-next{
+    position:absolute;
+
+    top:50%;
+    transform:translateY(-50%);
+
+    width:55px;
+    height:55px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.3);
+
+    background:rgba(0,0,0,.4);
+
+    color:#fff;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.lightbox-prev{
+    left:30px;
+}
+
+.lightbox-next{
+    right:30px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover,
+.close-lightbox:hover{
+    background:#c9a76a;
+    color:#050507;
+}
+
+
+/* =========================================================
+   LIGHTBOX INFO
+========================================================= */
+
+.lightbox-info{
+    position:absolute;
+
+    bottom:25px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    text-align:center;
+}
+
+.lightbox-info h3{
+    font-family:Georgia,serif;
+    font-size:22px;
+}
+
+.lightbox-info span{
+    color:#c9a76a;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:50px 20px;
+
+    text-align:center;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    background:#040406;
+}
+
+.footer-logo{
+    font-family:Georgia,serif;
+    font-size:25px;
+    letter-spacing:3px;
+}
+
+.footer-logo span{
+    color:#c9a76a;
+}
+
+footer p{
+    color:#666;
+    margin-top:10px;
+    font-size:12px;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes galleryIn{
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+@keyframes popup{
+
+    from{
+        opacity:0;
+        transform:scale(.92);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:900px){
+
+    nav{
+        display:none;
+    }
+
+    .gallery{
+        columns:2 180px;
+    }
+
+    .gallery-wrapper{
+        width:94%;
+    }
+
+}
+
+@media(max-width:550px){
+
+    .hero{
+        min-height:55vh;
+    }
+
+    .hero h1{
+        font-size:55px;
+    }
+
+    .gallery{
+        columns:2 140px;
+        column-gap:10px;
+    }
+
+    .gallery-item{
+        margin-bottom:10px;
+    }
+
+    .gallery-title{
+        left:10px;
+        bottom:10px;
+    }
+
+    .gallery-title strong{
+        font-size:14px;
+    }
+
+    .lightbox{
+        padding:15px;
+    }
+
+    .lightbox-image{
+        max-width:96vw;
+        max-height:78vh;
+    }
+
+    .lightbox-prev{
+        left:10px;
+    }
+
+    .lightbox-next{
+        right:10px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+    <div class="logo">
+        WED<span>STUDIOS</span>
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="about.html">About</a>
+
+        <a href="gallery.html">Gallery</a>
+
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-label">
+            Wed Studios
+        </div>
+
+        <h1>
+            Our <span>Stories</span>
+        </h1>
+
+        <p>
+            A collection of moments, emotions and celebrations
+            captured through our lens.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     GALLERY
+===================================================== -->
+
+<main class="gallery-wrapper">
+
+
+    <!-- CATEGORY FILTER -->
+
+    <div class="filters">
+
+        <button
+            class="filter-btn active"
+            data-category="all">
+            All
+        </button>
+
+        <button
+            class="filter-btn"
+            data-category="prewedding">
+            Pre Wedding
+        </button>
+
+        <button
+            class="filter-btn"
+            data-category="wedding">
+            Wedding
+        </button>
+
+        <button
+            class="filter-btn"
+            data-category="engagement">
+            Engagement
+        </button>
+
+        <button
+            class="filter-btn"
+            data-category="birthday">
+            Birthday
+        </button>
+
+    </div>
+
+
+
+    <!-- AJAX LOADER -->
+
+    <div
+        class="ajax-loader"
+        id="ajaxLoader">
+
+        <div class="spinner"></div>
+
+        <span>
+            Loading Stories...
+        </span>
+
+    </div>
+
+
+
+    <!-- GALLERY -->
+
+    <div
+        class="gallery"
+        id="gallery">
+    </div>
+
+
+
+    <!-- LOAD MORE -->
+
+    <div class="load-more-wrapper">
+
+        <button id="loadMore">
+            Load More Stories
+        </button>
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     LIGHTBOX
+===================================================== -->
+
+<div
+    class="lightbox"
+    id="lightbox">
+
+
+    <button
+        class="close-lightbox"
+        id="closeLightbox">
+        ×
+    </button>
+
+
+    <button
+        class="lightbox-prev"
+        id="prevImage">
+        ‹
+    </button>
+
+
+    <img
+        class="lightbox-image"
+        id="lightboxImage"
+        src=""
+        alt="Wed Studios">
+
+
+    <button
+        class="lightbox-next"
+        id="nextImage">
+        ›
+    </button>
+
+
+    <div class="lightbox-info">
+
+        <h3 id="lightboxTitle">
+            Wedding Story
+        </h3>
+
+        <span id="lightboxCategory">
+            Wedding
+        </span>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-logo">
+        WED<span>STUDIOS</span>
+    </div>
+
+    <p>
+        © 2026 Wed Studios · Varanasi, India
+    </p>
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   GALLERY DATA
+
+   Replace these image paths with your actual photos.
+
+   You can add 300+ images here.
+========================================================= */
+
+const galleryData = [
+
+    /* PRE WEDDING */
+
+    {
+        image:"images/gallery/prewedding/01.jpg",
+        title:"A Love Story",
+        category:"prewedding"
+    },
+
+    {
+        image:"images/gallery/prewedding/02.jpg",
+        title:"Together Forever",
+        category:"prewedding"
+    },
+
+    {
+        image:"images/gallery/prewedding/03.jpg",
+        title:"Golden Hour",
+        category:"prewedding"
+    },
+
+    {
+        image:"images/gallery/prewedding/04.jpg",
+        title:"Two Souls",
+        category:"prewedding"
+    },
+
+    {
+        image:"images/gallery/prewedding/05.jpg",
+        title:"Timeless Love",
+        category:"prewedding"
+    },
+
+    {
+        image:"images/gallery/prewedding/06.jpg",
+        title:"Our Beginning",
+        category:"prewedding"
+    },
+
+
+    /* WEDDING */
+
+    {
+        image:"images/gallery/wedding/01.jpg",
+        title:"The Wedding",
+        category:"wedding"
+    },
+
+    {
+        image:"images/gallery/wedding/02.jpg",
+        title:"Forever Begins",
+        category:"wedding"
+    },
+
+    {
+        image:"images/gallery/wedding/03.jpg",
+        title:"Sacred Moments",
+        category:"wedding"
+    },
+
+    {
+        image:"images/gallery/wedding/04.jpg",
+        title:"The Bride",
+        category:"wedding"
+    },
+
+    {
+        image:"images/gallery/wedding/05.jpg",
+        title:"The Groom",
+        category:"wedding"
+    },
+
+    {
+        image:"images/gallery/wedding/06.jpg",
+        title:"Wedding Emotions",
+        category:"wedding"
+    },
+
+
+    /* ENGAGEMENT */
+
+    {
+        image:"images/gallery/engagement/01.jpg",
+        title:"The Ring",
+        category:"engagement"
+    },
+
+    {
+        image:"images/gallery/engagement/02.jpg",
+        title:"Engaged",
+        category:"engagement"
+    },
+
+    {
+        image:"images/gallery/engagement/03.jpg",
+        title:"Forever Starts Here",
+        category:"engagement"
+    },
+
+    {
+        image:"images/gallery/engagement/04.jpg",
+        title:"A New Chapter",
+        category:"engagement"
+    },
+
+    {
+        image:"images/gallery/engagement/05.jpg",
+        title:"Together",
+        category:"engagement"
+    },
+
+
+    /* BIRTHDAY */
+
+    {
+        image:"images/gallery/birthday/01.jpg",
+        title:"Birthday Celebration",
+        category:"birthday"
+    },
+
+    {
+        image:"images/gallery/birthday/02.jpg",
+        title:"Birthday Memories",
+        category:"birthday"
+    },
+
+    {
+        image:"images/gallery/birthday/03.jpg",
+        title:"The Celebration",
+        category:"birthday"
+    },
+
+    {
+        image:"images/gallery/birthday/04.jpg",
+        title:"Another Year",
+        category:"birthday"
+    },
+
+    {
+        image:"images/gallery/birthday/05.jpg",
+        title:"Happy Moments",
+        category:"birthday"
+    }
+
+];
+
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+const gallery =
+    document.getElementById("gallery");
+
+const loadMore =
+    document.getElementById("loadMore");
+
+const loader =
+    document.getElementById("ajaxLoader");
+
+const filterButtons =
+    document.querySelectorAll(".filter-btn");
+
+const lightbox =
+    document.getElementById("lightbox");
+
+const lightboxImage =
+    document.getElementById("lightboxImage");
+
+const lightboxTitle =
+    document.getElementById("lightboxTitle");
+
+const lightboxCategory =
+    document.getElementById("lightboxCategory");
+
+const closeLightbox =
+    document.getElementById("closeLightbox");
+
+const prevImage =
+    document.getElementById("prevImage");
+
+const nextImage =
+    document.getElementById("nextImage");
+
+
+let currentCategory = "all";
+
+let currentItems = [];
+
+let displayedItems = 0;
+
+const ITEMS_PER_LOAD = 8;
+
+let currentLightboxIndex = 0;
+
+
+
+/* =========================================================
+   CATEGORY NAME
+========================================================= */
+
+function categoryName(category){
+
+    const names = {
+
+        prewedding:"Pre Wedding",
+
+        wedding:"Wedding",
+
+        engagement:"Engagement",
+
+        birthday:"Birthday"
+
+    };
+
+    return names[category] || category;
+
+}
+
+
+
+/* =========================================================
+   FILTER DATA
+========================================================= */
+
+function filterData(){
+
+    if(currentCategory === "all"){
+
+        currentItems =
+            [...galleryData];
+
+    }else{
+
+        currentItems =
+            galleryData.filter(
+                item =>
+                item.category === currentCategory
+            );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   CREATE GALLERY ITEM
+========================================================= */
+
+function createGalleryItem(item,index){
+
+    const div =
+        document.createElement("div");
+
+    div.className =
+        "gallery-item";
+
+    div.innerHTML = `
+
+        <img
+            src="${item.image}"
+            alt="${item.title}"
+            loading="lazy"
+            decoding="async">
+
+        <div class="gallery-overlay">
+
+            <div class="view-icon">
+                ⤢
+            </div>
+
+        </div>
+
+        <div class="gallery-title">
+
+            <strong>
+                ${item.title}
+            </strong>
+
+            <small>
+                ${categoryName(item.category)}
+            </small>
+
+        </div>
+
+    `;
+
+
+    div.addEventListener(
+        "click",
+        function(){
+
+            openLightbox(index);
+
+        }
+    );
+
+
+    return div;
+
+}
+
+
+
+/* =========================================================
+   AJAX STYLE LOAD
+========================================================= */
+
+function loadGallery(reset = false){
+
+    loader.classList.add("show");
+
+    loadMore.classList.add("loading");
+
+    setTimeout(() => {
+
+        if(reset){
+
+            gallery.innerHTML = "";
+
+            displayedItems = 0;
+
+        }
+
+
+        const nextItems =
+            currentItems.slice(
+                displayedItems,
+                displayedItems + ITEMS_PER_LOAD
+            );
+
+
+        nextItems.forEach(
+            (item,index) => {
+
+                const actualIndex =
+                    displayedItems + index;
+
+                gallery.appendChild(
+                    createGalleryItem(
+                        item,
+                        actualIndex
+                    )
+                );
+
+            }
+        );
+
+
+        displayedItems +=
+            nextItems.length;
+
+
+        if(
+            displayedItems >=
+            currentItems.length
+        ){
+
+            loadMore.style.display =
+                "none";
+
+        }else{
+
+            loadMore.style.display =
+                "inline-block";
+
+        }
+
+
+        loader.classList.remove("show");
+
+        loadMore.classList.remove("loading");
+
+    },450);
+
+}
+
+
+
+/* =========================================================
+   CATEGORY FILTER
+========================================================= */
+
+filterButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            filterButtons.forEach(btn =>
+                btn.classList.remove("active")
+            );
+
+            this.classList.add("active");
+
+
+            currentCategory =
+                this.dataset.category;
+
+
+            filterData();
+
+            loadGallery(true);
+
+        }
+    );
+
+});
+
+
+
+/* =========================================================
+   LOAD MORE
+========================================================= */
+
+loadMore.addEventListener(
+    "click",
+    function(){
+
+        loadGallery(false);
+
+    }
+);
+
+
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+function openLightbox(index){
+
+    currentLightboxIndex =
+        index;
+
+    const item =
+        currentItems[index];
+
+    if(!item) return;
+
+
+    lightboxImage.src =
+        item.image;
+
+    lightboxImage.alt =
+        item.title;
+
+    lightboxTitle.textContent =
+        item.title;
+
+    lightboxCategory.textContent =
+        categoryName(item.category);
+
+
+    lightbox.classList.add("active");
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+
+function closeLightboxFunction(){
+
+    lightbox.classList.remove("active");
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+
+function changeLightbox(direction){
+
+    currentLightboxIndex +=
+        direction;
+
+
+    if(
+        currentLightboxIndex < 0
+    ){
+
+        currentLightboxIndex =
+            currentItems.length - 1;
+
+    }
+
+
+    if(
+        currentLightboxIndex >=
+        currentItems.length
+    ){
+
+        currentLightboxIndex = 0;
+
+    }
+
+
+    openLightbox(
+        currentLightboxIndex
+    );
+
+}
+
+
+
+/* =========================================================
+   LIGHTBOX EVENTS
+========================================================= */
+
+closeLightbox.addEventListener(
+    "click",
+    closeLightboxFunction
+);
+
+
+prevImage.addEventListener(
+    "click",
+    function(){
+
+        changeLightbox(-1);
+
+    }
+);
+
+
+nextImage.addEventListener(
+    "click",
+    function(){
+
+        changeLightbox(1);
+
+    }
+);
+
+
+
+/* =========================================================
+   CLICK OUTSIDE IMAGE
+========================================================= */
+
+lightbox.addEventListener(
+    "click",
+    function(e){
+
+        if(
+            e.target === lightbox
+        ){
+
+            closeLightboxFunction();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   KEYBOARD CONTROLS
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(
+            !lightbox.classList.contains(
+                "active"
+            )
+        ){
+
+            return;
+
+        }
+
+
+        if(e.key === "Escape"){
+
+            closeLightboxFunction();
+
+        }
+
+
+        if(e.key === "ArrowLeft"){
+
+            changeLightbox(-1);
+
+        }
+
+
+        if(e.key === "ArrowRight"){
+
+            changeLightbox(1);
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   INITIAL LOAD
+========================================================= */
+
+filterData();
+
+loadGallery(true);
+
+
+
+/* =========================================================
+   OPTIONAL:
+   AUTO LOAD WHEN USER SCROLLS NEAR BOTTOM
+========================================================= */
+
+window.addEventListener(
+    "scroll",
+    function(){
+
+        const nearBottom =
+            window.innerHeight +
+            window.scrollY >=
+            document.body.offsetHeight - 700;
+
+
+        if(
+            nearBottom &&
+            displayedItems < currentItems.length &&
+            !loadMore.classList.contains(
+                "loading"
+            )
+        ){
+
+            loadGallery(false);
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
+```
