@@ -598,7 +598,6 @@ td {
 }
 
 @media(max-width: 900px) {
-
   .stats {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -637,7 +636,6 @@ td {
 }
 
 @media(max-width: 600px) {
-
   .stats {
     grid-template-columns: 1fr 1fr;
     gap: 8px;
@@ -705,9 +703,7 @@ td {
 <!-- LOGIN -->
 
 <section class="login-screen" id="loginScreen">
-
   <div class="login-box">
-
     <div class="logo">
       <h1>WED STUDIOS</h1>
       <p>ADMIN PANEL</p>
@@ -730,18 +726,13 @@ td {
     <div class="login-error" id="loginError">
       Invalid username or password.
     </div>
-
   </div>
-
 </section>
-
 
 <!-- DASHBOARD -->
 
 <section class="dashboard" id="dashboard">
-
   <header class="topbar">
-
     <div style="display:flex;align-items:center;gap:12px;">
       <button class="mobile-menu" onclick="toggleSidebar()">☰</button>
       <div class="topbar-logo">WED STUDIOS</div>
@@ -751,16 +742,11 @@ td {
       <a href="/" target="_blank" class="view-site">View Website</a>
       <button class="logout-btn" onclick="logout()">Logout</button>
     </div>
-
   </header>
 
-
   <div class="layout">
-
     <!-- SIDEBAR -->
-
     <aside class="sidebar" id="sidebar">
-
       <button class="active" onclick="showPage('dashboardPage', this)">
         📊 Dashboard
       </button>
@@ -776,27 +762,18 @@ td {
       <button onclick="openShootModal()">
         ➕ Add Shoot
       </button>
-
     </aside>
 
-
     <!-- MAIN -->
-
     <main class="main">
-
-
       <!-- DASHBOARD PAGE -->
-
       <section class="page active" id="dashboardPage">
-
         <div class="page-title">
           <h2>Dashboard</h2>
           <p>Your wedding & photography shoot schedule.</p>
         </div>
 
-
         <div class="stats">
-
           <div class="stat">
             <div class="stat-title">TOTAL SHOOTS</div>
             <div class="stat-number" id="totalShoots">0</div>
@@ -816,12 +793,9 @@ td {
             <div class="stat-title">TODAY</div>
             <div class="stat-number" id="todayShoots">0</div>
           </div>
-
         </div>
 
-
         <div class="table-card">
-
           <div class="table-top">
             <div>
               <strong>Upcoming Shoots</strong>
@@ -833,9 +807,7 @@ td {
           </div>
 
           <div class="table-wrap">
-
             <table>
-
               <thead>
                 <tr>
                   <th>Date</th>
@@ -846,47 +818,31 @@ td {
                   <th>Time</th>
                 </tr>
               </thead>
-
               <tbody id="dashboardShootList"></tbody>
-
             </table>
-
           </div>
-
         </div>
-
       </section>
 
-
       <!-- CALENDAR PAGE -->
-
       <section class="page" id="calendarPage">
-
         <div class="page-title">
           <h2>Shoot Calendar</h2>
           <p>Click any date to add a new shoot.</p>
         </div>
 
-
         <div class="calendar-card">
-
           <div class="calendar-header">
-
-            <h3 id="calendarTitle">
-              October 2026
-            </h3>
+            <h3 id="calendarTitle">October 2026</h3>
 
             <div class="calendar-actions">
               <button class="small-btn" onclick="previousMonth()">‹</button>
               <button class="small-btn" onclick="goToday()">Today</button>
               <button class="small-btn" onclick="nextMonth()">›</button>
             </div>
-
           </div>
 
-
           <div class="weekdays">
-
             <div>MON</div>
             <div>TUE</div>
             <div>WED</div>
@@ -894,36 +850,21 @@ td {
             <div>FRI</div>
             <div>SAT</div>
             <div>SUN</div>
-
           </div>
 
-
           <div class="calendar-grid" id="calendarGrid"></div>
-
         </div>
-
       </section>
 
-
       <!-- ALL SHOOTS -->
-
       <section class="page" id="allShootsPage">
-
         <div class="page-title">
-
           <h2>All Shoots</h2>
-
-          <p>
-            View and manage all your upcoming and previous shoots.
-          </p>
-
+          <p>View and manage all your upcoming and previous shoots.</p>
         </div>
 
-
         <div class="table-card">
-
           <div class="table-top">
-
             <input
               type="text"
               id="searchShoots"
@@ -932,53 +873,17 @@ td {
             >
 
             <div class="filters">
-
-              <button
-                class="filter-btn active"
-                onclick="setFilter('all', this)"
-              >
-                All
-              </button>
-
-              <button
-                class="filter-btn"
-                onclick="setFilter('today', this)"
-              >
-                Today
-              </button>
-
-              <button
-                class="filter-btn"
-                onclick="setFilter('week', this)"
-              >
-                This Week
-              </button>
-
-              <button
-                class="filter-btn"
-                onclick="setFilter('month', this)"
-              >
-                This Month
-              </button>
-
-              <button
-                class="filter-btn"
-                onclick="setFilter('upcoming', this)"
-              >
-                Upcoming
-              </button>
-
+              <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+              <button class="filter-btn" onclick="setFilter('today', this)">Today</button>
+              <button class="filter-btn" onclick="setFilter('week', this)">This Week</button>
+              <button class="filter-btn" onclick="setFilter('month', this)">This Month</button>
+              <button class="filter-btn" onclick="setFilter('upcoming', this)">Upcoming</button>
             </div>
-
           </div>
 
-
           <div class="table-wrap">
-
             <table>
-
               <thead>
-
                 <tr>
                   <th>Date</th>
                   <th>Client</th>
@@ -988,269 +893,105 @@ td {
                   <th>Time</th>
                   <th>Actions</th>
                 </tr>
-
               </thead>
-
               <tbody id="allShootsList"></tbody>
-
             </table>
-
           </div>
-
         </div>
-
       </section>
-
     </main>
-
   </div>
-
 </section>
-
 
 <!-- ADD / EDIT SHOOT MODAL -->
 
 <div class="modal" id="shootModal">
-
   <div class="modal-box">
-
     <div class="modal-header">
-
-      <h3 id="modalTitle">
-        Add New Shoot
-      </h3>
-
-      <button class="close-btn" onclick="closeShootModal()">
-        ×
-      </button>
-
+      <h3 id="modalTitle">Add New Shoot</h3>
+      <button class="close-btn" onclick="closeShootModal()">×</button>
     </div>
 
-
     <form id="shootForm" onsubmit="saveShoot(event)">
-
       <input type="hidden" id="editShootId">
 
-
       <div class="form-grid">
-
-
         <div class="form-group">
-
           <label>Shoot Date *</label>
-
-          <input
-            type="date"
-            id="shootDate"
-            required
-          >
-
+          <input type="date" id="shootDate" required>
         </div>
 
-
         <div class="form-group">
-
           <label>Function / Shoot Type *</label>
-
           <select id="shootFunction" required>
-
             <option value="">Select Function</option>
-
-            <option value="Wedding">
-              Wedding
-            </option>
-
-            <option value="Engagement">
-              Engagement
-            </option>
-
-            <option value="Haldi">
-              Haldi
-            </option>
-
-            <option value="Mehndi">
-              Mehndi
-            </option>
-
-            <option value="Sangeet">
-              Sangeet
-            </option>
-
-            <option value="Pre Wedding">
-              Pre Wedding
-            </option>
-
-            <option value="Birthday">
-              Birthday
-            </option>
-
-            <option value="Anniversary">
-              Anniversary
-            </option>
-
-            <option value="Maternity">
-              Maternity
-            </option>
-
-            <option value="Baby Shoot">
-              Baby Shoot
-            </option>
-
-            <option value="Other">
-              Other
-            </option>
-
+            <option value="Wedding">Wedding</option>
+            <option value="Engagement">Engagement</option>
+            <option value="Haldi">Haldi</option>
+            <option value="Mehndi">Mehndi</option>
+            <option value="Sangeet">Sangeet</option>
+            <option value="Pre Wedding">Pre Wedding</option>
+            <option value="Birthday">Birthday</option>
+            <option value="Anniversary">Anniversary</option>
+            <option value="Maternity">Maternity</option>
+            <option value="Baby Shoot">Baby Shoot</option>
+            <option value="Other">Other</option>
           </select>
-
         </div>
 
-
         <div class="form-group">
-
           <label>Client Name *</label>
-
-          <input
-            type="text"
-            id="clientName"
-            placeholder="e.g. Rahul & Priya"
-            required
-          >
-
+          <input type="text" id="clientName" placeholder="e.g. Rahul & Priya" required>
         </div>
 
-
         <div class="form-group">
-
           <label>Contact Number</label>
-
-          <input
-            type="tel"
-            id="clientPhone"
-            placeholder="e.g. 9876543210"
-          >
-
+          <input type="tel" id="clientPhone" placeholder="e.g. 9876543210">
         </div>
 
-
         <div class="form-group full">
-
           <label>Venue / Location *</label>
-
-          <input
-            type="text"
-            id="shootLocation"
-            placeholder="e.g. Varanasi Ghats"
-            required
-          >
-
+          <input type="text" id="shootLocation" placeholder="e.g. Varanasi Ghats" required>
         </div>
 
-
         <div class="form-group">
-
           <label>Number of People *</label>
-
-          <input
-            type="number"
-            id="peopleCount"
-            min="1"
-            placeholder="e.g. 4"
-            required
-          >
-
+          <input type="number" id="peopleCount" min="1" placeholder="e.g. 4" required>
         </div>
 
-
         <div class="form-group">
-
           <label>Reporting Time</label>
-
-          <input
-            type="time"
-            id="reportingTime"
-          >
-
+          <input type="time" id="reportingTime">
         </div>
 
-
         <div class="form-group">
-
           <label>Start Time</label>
-
-          <input
-            type="time"
-            id="startTime"
-          >
-
+          <input type="time" id="startTime">
         </div>
 
-
         <div class="form-group">
-
           <label>End Time</label>
-
-          <input
-            type="time"
-            id="endTime"
-          >
-
+          <input type="time" id="endTime">
         </div>
-
 
         <div class="form-group">
-
           <label>Estimated Amount</label>
-
-          <input
-            type="number"
-            id="shootAmount"
-            min="0"
-            placeholder="₹"
-          >
-
+          <input type="number" id="shootAmount" min="0" placeholder="₹">
         </div>
-
 
         <div class="form-group full">
-
           <label>Notes</label>
-
-          <textarea
-            id="shootNotes"
-            placeholder="Any special instructions, equipment, team details etc."
-          ></textarea>
-
+          <textarea id="shootNotes" placeholder="Any special instructions, equipment, team details etc."></textarea>
         </div>
-
-
       </div>
-
 
       <div class="modal-actions">
-
-        <button
-          type="button"
-          class="cancel-btn"
-          onclick="closeShootModal()"
-        >
-          Cancel
-        </button>
-
-        <button
-          type="submit"
-          class="primary-btn"
-        >
-          SAVE SHOOT
-        </button>
-
+        <button type="button" class="cancel-btn" onclick="closeShootModal()">Cancel</button>
+        <button type="submit" class="primary-btn" id="saveBtn">SAVE SHOOT</button>
       </div>
-
     </form>
-
   </div>
-
 </div>
-
 
 <script>
 
@@ -1261,1351 +1002,554 @@ td {
 const ADMIN_USERNAME = "admin";
 const ADMIN_PASSWORD = "omji..";
 
+// PABBLY WEBHOOK URL
+const PABBLY_WEBHOOK_URL = "https://connect.pabbly.com/webhook-listener/webhook/IjU3NjMwNTZmMDYzZjA0MzM1MjZjNTUzZCI_3D_pc/IjU3NjcwNTY4MDYzMTA0M2M1MjZhNTUzMzUxMzci_pc";
 
 function login() {
+  const username = document.getElementById("loginUsername").value.trim();
+  const password = document.getElementById("loginPassword").value;
 
-  const username =
-    document.getElementById("loginUsername").value.trim();
-
-  const password =
-    document.getElementById("loginPassword").value;
-
-  if (
-    username === ADMIN_USERNAME &&
-    password === ADMIN_PASSWORD
-  ) {
-
-    sessionStorage.setItem(
-      "wedStudiosAdmin",
-      "loggedIn"
-    );
-
+  if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+    sessionStorage.setItem("wedStudiosAdmin", "loggedIn");
     showDashboard();
-
   } else {
-
-    document.getElementById("loginError").style.display =
-      "block";
-
+    document.getElementById("loginError").style.display = "block";
   }
-
 }
-
 
 function logout() {
-
-  sessionStorage.removeItem(
-    "wedStudiosAdmin"
-  );
-
+  sessionStorage.removeItem("wedStudiosAdmin");
   location.reload();
-
 }
-
 
 function showDashboard() {
-
-  document.getElementById("loginScreen").style.display =
-    "none";
-
-  document.getElementById("dashboard").style.display =
-    "block";
-
+  document.getElementById("loginScreen").style.display = "none";
+  document.getElementById("dashboard").style.display = "block";
   renderEverything();
-
 }
 
-
-if (
-  sessionStorage.getItem("wedStudiosAdmin") ===
-  "loggedIn"
-) {
-
+if (sessionStorage.getItem("wedStudiosAdmin") === "loggedIn") {
   showDashboard();
-
 }
-
 
 /* =========================================
    DATA
 ========================================= */
 
-let shoots =
-  JSON.parse(
-    localStorage.getItem("wedStudiosShoots") || "[]"
-  );
-
+let shoots = JSON.parse(localStorage.getItem("wedStudiosShoots") || "[]");
 let currentDate = new Date();
-
 let currentFilter = "all";
 
-
 function saveData() {
-
-  localStorage.setItem(
-    "wedStudiosShoots",
-    JSON.stringify(shoots)
-  );
-
+  localStorage.setItem("wedStudiosShoots", JSON.stringify(shoots));
 }
 
+// Function to send data to Pabbly Webhook
+async function sendToWebhook(shootData, actionType) {
+  try {
+    const payload = {
+      action: actionType, // 'create' or 'update'
+      id: shootData.id,
+      shoot_date: shootData.date,
+      shoot_type: shootData.function,
+      client_name: shootData.client,
+      contact_number: shootData.phone,
+      venue_location: shootData.location,
+      number_of_people: shootData.people,
+      reporting_time: shootData.reporting,
+      start_time: shootData.start,
+      end_time: shootData.end,
+      estimated_amount: shootData.amount,
+      notes: shootData.notes,
+      timestamp: new Date().toISOString()
+    };
+
+    fetch(PABBLY_WEBHOOK_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    }).catch(err => console.error("Webhook Background Error:", err));
+
+  } catch (error) {
+    console.error("Error dispatching webhook:", error);
+  }
+}
 
 /* =========================================
    PAGE NAVIGATION
 ========================================= */
 
 function showPage(pageId, button) {
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.remove("active");
+  });
 
-  document
-    .querySelectorAll(".page")
-    .forEach(page => {
-      page.classList.remove("active");
-    });
-
-  document
-    .getElementById(pageId)
-    .classList.add("active");
-
+  document.getElementById(pageId).classList.add("active");
 
   if (button) {
-
-    document
-      .querySelectorAll(".sidebar button")
-      .forEach(btn => {
-        btn.classList.remove("active");
-      });
-
+    document.querySelectorAll(".sidebar button").forEach(btn => {
+      btn.classList.remove("active");
+    });
     button.classList.add("active");
-
   }
 
-
-  if (pageId === "calendarPage") {
-
-    renderCalendar();
-
-  }
-
-  if (pageId === "allShootsPage") {
-
-    renderAllShoots();
-
-  }
+  if (pageId === "calendarPage") renderCalendar();
+  if (pageId === "allShootsPage") renderAllShoots();
 
   if (window.innerWidth <= 900) {
-
-    document
-      .getElementById("sidebar")
-      .classList.remove("open");
-
+    document.getElementById("sidebar").classList.remove("open");
   }
-
 }
-
 
 function toggleSidebar() {
-
-  document
-    .getElementById("sidebar")
-    .classList.toggle("open");
-
+  document.getElementById("sidebar").classList.toggle("open");
 }
-
 
 /* =========================================
    MODAL
 ========================================= */
 
 function openShootModal(date = null) {
-
-  document
-    .getElementById("shootModal")
-    .classList.add("show");
-
-  document
-    .getElementById("modalTitle")
-    .textContent =
-      "Add New Shoot";
-
-  document
-    .getElementById("shootForm")
-    .reset();
-
-  document
-    .getElementById("editShootId")
-    .value = "";
+  document.getElementById("shootModal").classList.add("show");
+  document.getElementById("modalTitle").textContent = "Add New Shoot";
+  document.getElementById("shootForm").reset();
+  document.getElementById("editShootId").value = "";
 
   if (date) {
-
-    document
-      .getElementById("shootDate")
-      .value = date;
-
+    document.getElementById("shootDate").value = date;
   } else {
-
-    document
-      .getElementById("shootDate")
-      .value =
-        formatDateInput(new Date());
-
+    document.getElementById("shootDate").value = formatDateInput(new Date());
   }
-
 }
-
 
 function closeShootModal() {
-
-  document
-    .getElementById("shootModal")
-    .classList.remove("show");
-
+  document.getElementById("shootModal").classList.remove("show");
 }
-
 
 /* =========================================
    SAVE SHOOT
 ========================================= */
 
 function saveShoot(event) {
-
   event.preventDefault();
 
-
-  const id =
-    document.getElementById("editShootId").value;
-
+  const id = document.getElementById("editShootId").value;
+  const isUpdate = Boolean(id);
 
   const shoot = {
-
     id: id || Date.now().toString(),
-
-    date:
-      document.getElementById("shootDate").value,
-
-    function:
-      document.getElementById("shootFunction").value,
-
-    client:
-      document.getElementById("clientName").value.trim(),
-
-    phone:
-      document.getElementById("clientPhone").value.trim(),
-
-    location:
-      document.getElementById("shootLocation").value.trim(),
-
-    people:
-      document.getElementById("peopleCount").value,
-
-    reporting:
-      document.getElementById("reportingTime").value,
-
-    start:
-      document.getElementById("startTime").value,
-
-    end:
-      document.getElementById("endTime").value,
-
-    amount:
-      document.getElementById("shootAmount").value,
-
-    notes:
-      document.getElementById("shootNotes").value.trim()
-
+    date: document.getElementById("shootDate").value,
+    function: document.getElementById("shootFunction").value,
+    client: document.getElementById("clientName").value.trim(),
+    phone: document.getElementById("clientPhone").value.trim(),
+    location: document.getElementById("shootLocation").value.trim(),
+    people: document.getElementById("peopleCount").value,
+    reporting: document.getElementById("reportingTime").value,
+    start: document.getElementById("startTime").value,
+    end: document.getElementById("endTime").value,
+    amount: document.getElementById("shootAmount").value,
+    notes: document.getElementById("shootNotes").value.trim()
   };
 
-
-  if (id) {
-
-    const index =
-      shoots.findIndex(
-        s => s.id === id
-      );
-
+  if (isUpdate) {
+    const index = shoots.findIndex(s => s.id === id);
     if (index !== -1) {
-
       shoots[index] = shoot;
-
     }
-
   } else {
-
     shoots.push(shoot);
-
   }
-
 
   saveData();
 
+  // Send data to Pabbly Webhook
+  sendToWebhook(shoot, isUpdate ? "update" : "create");
+
   closeShootModal();
-
   renderEverything();
-
 }
-
 
 /* =========================================
    EDIT SHOOT
 ========================================= */
 
 function editShoot(id) {
-
-  const shoot =
-    shoots.find(
-      s => s.id === id
-    );
-
+  const shoot = shoots.find(s => s.id === id);
   if (!shoot) return;
 
-
-  document
-    .getElementById("shootModal")
-    .classList.add("show");
-
-
-  document
-    .getElementById("modalTitle")
-    .textContent =
-      "Edit Shoot";
-
-
-  document
-    .getElementById("editShootId")
-    .value =
-      shoot.id;
-
-
-  document
-    .getElementById("shootDate")
-    .value =
-      shoot.date || "";
-
-
-  document
-    .getElementById("shootFunction")
-    .value =
-      shoot.function || "";
-
-
-  document
-    .getElementById("clientName")
-    .value =
-      shoot.client || "";
-
-
-  document
-    .getElementById("clientPhone")
-    .value =
-      shoot.phone || "";
-
-
-  document
-    .getElementById("shootLocation")
-    .value =
-      shoot.location || "";
-
-
-  document
-    .getElementById("peopleCount")
-    .value =
-      shoot.people || "";
-
-
-  document
-    .getElementById("reportingTime")
-    .value =
-      shoot.reporting || "";
-
-
-  document
-    .getElementById("startTime")
-    .value =
-      shoot.start || "";
-
-
-  document
-    .getElementById("endTime")
-    .value =
-      shoot.end || "";
-
-
-  document
-    .getElementById("shootAmount")
-    .value =
-      shoot.amount || "";
-
-
-  document
-    .getElementById("shootNotes")
-    .value =
-      shoot.notes || "";
-
+  document.getElementById("shootModal").classList.add("show");
+  document.getElementById("modalTitle").textContent = "Edit Shoot";
+  document.getElementById("editShootId").value = shoot.id;
+  document.getElementById("shootDate").value = shoot.date || "";
+  document.getElementById("shootFunction").value = shoot.function || "";
+  document.getElementById("clientName").value = shoot.client || "";
+  document.getElementById("clientPhone").value = shoot.phone || "";
+  document.getElementById("shootLocation").value = shoot.location || "";
+  document.getElementById("peopleCount").value = shoot.people || "";
+  document.getElementById("reportingTime").value = shoot.reporting || "";
+  document.getElementById("startTime").value = shoot.start || "";
+  document.getElementById("endTime").value = shoot.end || "";
+  document.getElementById("shootAmount").value = shoot.amount || "";
+  document.getElementById("shootNotes").value = shoot.notes || "";
 }
-
 
 /* =========================================
    DELETE
 ========================================= */
 
 function deleteShoot(id) {
-
-  const shoot =
-    shoots.find(
-      s => s.id === id
-    );
-
+  const shoot = shoots.find(s => s.id === id);
   if (!shoot) return;
 
+  if (!confirm(`Delete ${shoot.client} - ${shoot.function}?`)) return;
 
-  if (
-    !confirm(
-      `Delete ${shoot.client} - ${shoot.function}?`
-    )
-  ) return;
-
-
-  shoots =
-    shoots.filter(
-      s => s.id !== id
-    );
-
+  shoots = shoots.filter(s => s.id !== id);
 
   saveData();
-
   renderEverything();
-
 }
-
 
 /* =========================================
    CALENDAR
 ========================================= */
 
 function renderCalendar() {
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
 
-  const year =
-    currentDate.getFullYear();
+  const monthName = currentDate.toLocaleString("en-IN", { month: "long" });
+  document.getElementById("calendarTitle").textContent = `${monthName} ${year}`;
 
-  const month =
-    currentDate.getMonth();
-
-
-  const monthName =
-    currentDate.toLocaleString(
-      "en-IN",
-      {
-        month: "long"
-      }
-    );
-
-
-  document
-    .getElementById("calendarTitle")
-    .textContent =
-      `${monthName} ${year}`;
-
-
-  const grid =
-    document.getElementById("calendarGrid");
-
+  const grid = document.getElementById("calendarGrid");
   grid.innerHTML = "";
 
+  const firstDay = new Date(year, month, 1);
+  let startingDay = firstDay.getDay();
 
-  const firstDay =
-    new Date(
-      year,
-      month,
-      1
-    );
+  // Convert Sunday=0 to Monday=0
+  startingDay = startingDay === 0 ? 6 : startingDay - 1;
 
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const previousMonthDays = new Date(year, month, 0).getDate();
+  const totalCells = Math.ceil((startingDay + daysInMonth) / 7) * 7;
 
-  let startingDay =
-    firstDay.getDay();
-
-  /*
-    Convert Sunday=0 to Monday=0
-  */
-
-  startingDay =
-    startingDay === 0
-      ? 6
-      : startingDay - 1;
-
-
-  const daysInMonth =
-    new Date(
-      year,
-      month + 1,
-      0
-    ).getDate();
-
-
-  const previousMonthDays =
-    new Date(
-      year,
-      month,
-      0
-    ).getDate();
-
-
-  const totalCells =
-    Math.ceil(
-      (startingDay + daysInMonth) / 7
-    ) * 7;
-
-
-  for (
-    let i = 0;
-    i < totalCells;
-    i++
-  ) {
-
-    const cell =
-      document.createElement("div");
-
+  for (let i = 0; i < totalCells; i++) {
+    const cell = document.createElement("div");
     cell.className = "day";
 
-
     let dayNumber;
-
     let cellDate;
 
-
     if (i < startingDay) {
-
-      dayNumber =
-        previousMonthDays -
-        startingDay +
-        i +
-        1;
-
-      cell.classList.add(
-        "other-month"
-      );
-
-
-      cellDate =
-        new Date(
-          year,
-          month - 1,
-          dayNumber
-        );
-
+      dayNumber = previousMonthDays - startingDay + i + 1;
+      cell.classList.add("other-month");
+      cellDate = new Date(year, month - 1, dayNumber);
+    } else if (i >= startingDay + daysInMonth) {
+      dayNumber = i - (startingDay + daysInMonth) + 1;
+      cell.classList.add("other-month");
+      cellDate = new Date(year, month + 1, dayNumber);
+    } else {
+      dayNumber = i - startingDay + 1;
+      cellDate = new Date(year, month, dayNumber);
     }
 
-    else if (
-      i >=
-      startingDay + daysInMonth
-    ) {
+    const dateString = formatDateInput(cellDate);
 
-      dayNumber =
-        i -
-        (startingDay + daysInMonth) +
-        1;
-
-      cell.classList.add(
-        "other-month"
-      );
-
-
-      cellDate =
-        new Date(
-          year,
-          month + 1,
-          dayNumber
-        );
-
+    if (isSameDate(cellDate, new Date())) {
+      cell.classList.add("today");
     }
 
-    else {
-
-      dayNumber =
-        i - startingDay + 1;
-
-
-      cellDate =
-        new Date(
-          year,
-          month,
-          dayNumber
-        );
-
-    }
-
-
-    const dateString =
-      formatDateInput(cellDate);
-
-
-    if (
-      isSameDate(
-        cellDate,
-        new Date()
-      )
-    ) {
-
-      cell.classList.add(
-        "today"
-      );
-
-    }
-
-
-    const number =
-      document.createElement("div");
-
-    number.className =
-      "day-number";
-
-    number.textContent =
-      dayNumber;
-
-
+    const number = document.createElement("div");
+    number.className = "day-number";
+    number.textContent = dayNumber;
     cell.appendChild(number);
 
+    const dayShoots = shoots.filter(s => s.date === dateString);
 
-    const dayShoots =
-      shoots.filter(
-        s => s.date === dateString
-      );
+    dayShoots.forEach(shoot => {
+      const event = document.createElement("div");
+      event.className = "event";
+      event.innerHTML = `
+        <div class="event-name">${escapeHtml(shoot.client)}</div>
+        <div class="event-type">${escapeHtml(shoot.function)}</div>
+      `;
 
-
-    dayShoots.forEach(
-      shoot => {
-
-        const event =
-          document.createElement("div");
-
-        event.className =
-          "event";
-
-
-        event.innerHTML = `
-          <div class="event-name">
-            ${escapeHtml(shoot.client)}
-          </div>
-          <div class="event-type">
-            ${escapeHtml(shoot.function)}
-          </div>
-        `;
-
-
-        event.onclick =
-          function(e) {
-
-            e.stopPropagation();
-
-            editShoot(shoot.id);
-
-          };
-
-
-        cell.appendChild(event);
-
-      }
-    );
-
-
-    cell.onclick =
-      function() {
-
-        openShootModal(dateString);
-
+      event.onclick = function(e) {
+        e.stopPropagation();
+        editShoot(shoot.id);
       };
 
+      cell.appendChild(event);
+    });
+
+    cell.onclick = function() {
+      openShootModal(dateString);
+    };
 
     grid.appendChild(cell);
-
   }
-
 }
-
 
 function previousMonth() {
-
-  currentDate.setMonth(
-    currentDate.getMonth() - 1
-  );
-
+  currentDate.setMonth(currentDate.getMonth() - 1);
   renderCalendar();
-
 }
-
 
 function nextMonth() {
-
-  currentDate.setMonth(
-    currentDate.getMonth() + 1
-  );
-
+  currentDate.setMonth(currentDate.getMonth() + 1);
   renderCalendar();
-
 }
-
 
 function goToday() {
-
-  currentDate =
-    new Date();
-
+  currentDate = new Date();
   renderCalendar();
-
 }
-
 
 /* =========================================
    ALL SHOOTS
 ========================================= */
 
 function renderAllShoots() {
+  const tbody = document.getElementById("allShootsList");
+  let list = [...shoots];
 
-  const tbody =
-    document.getElementById(
-      "allShootsList"
-    );
-
-
-  let list =
-    [...shoots];
-
-
-  const search =
-    document
-      .getElementById("searchShoots")
-      ?.value
-      .toLowerCase()
-      .trim();
-
+  const search = document.getElementById("searchShoots")?.value.toLowerCase().trim();
 
   if (search) {
-
-    list =
-      list.filter(
-        shoot =>
-
-          shoot.client
-            .toLowerCase()
-            .includes(search)
-
-          ||
-
-          shoot.function
-            .toLowerCase()
-            .includes(search)
-
-          ||
-
-          shoot.location
-            .toLowerCase()
-            .includes(search)
-
-      );
-
-  }
-
-
-  const today =
-    new Date();
-
-  today.setHours(
-    0,0,0,0
-  );
-
-
-  if (
-    currentFilter ===
-    "today"
-  ) {
-
-    const todayString =
-      formatDateInput(today);
-
-    list =
-      list.filter(
-        s => s.date === todayString
-      );
-
-  }
-
-
-  if (
-    currentFilter ===
-    "week"
-  ) {
-
-    const end =
-      new Date(today);
-
-    end.setDate(
-      end.getDate() + 7
+    list = list.filter(shoot =>
+      shoot.client.toLowerCase().includes(search) ||
+      shoot.function.toLowerCase().includes(search) ||
+      shoot.location.toLowerCase().includes(search)
     );
-
-
-    list =
-      list.filter(
-        s => {
-
-          const d =
-            parseDate(s.date);
-
-          return (
-            d >= today &&
-            d <= end
-          );
-
-        }
-      );
-
   }
 
+  const today = new Date();
+  today.setHours(0,0,0,0);
 
-  if (
-    currentFilter ===
-    "month"
-  ) {
-
-    list =
-      list.filter(
-        s => {
-
-          const d =
-            parseDate(s.date);
-
-          return (
-            d.getMonth() ===
-              today.getMonth()
-            &&
-            d.getFullYear() ===
-              today.getFullYear()
-          );
-
-        }
-      );
-
+  if (currentFilter === "today") {
+    const todayString = formatDateInput(today);
+    list = list.filter(s => s.date === todayString);
   }
 
-
-  if (
-    currentFilter ===
-    "upcoming"
-  ) {
-
-    list =
-      list.filter(
-        s =>
-          parseDate(s.date) >=
-          today
-      );
-
+  if (currentFilter === "week") {
+    const end = new Date(today);
+    end.setDate(end.getDate() + 7);
+    list = list.filter(s => {
+      const d = parseDate(s.date);
+      return d >= today && d <= end;
+    });
   }
 
+  if (currentFilter === "month") {
+    list = list.filter(s => {
+      const d = parseDate(s.date);
+      return d.getMonth() === today.getMonth() && d.getFullYear() === today.getFullYear();
+    });
+  }
 
-  list.sort(
-    (a,b) =>
-      parseDate(a.date) -
-      parseDate(b.date)
-  );
+  if (currentFilter === "upcoming") {
+    list = list.filter(s => parseDate(s.date) >= today);
+  }
 
+  list.sort((a,b) => parseDate(a.date) - parseDate(b.date));
 
   tbody.innerHTML = "";
 
-
   if (!list.length) {
-
     tbody.innerHTML = `
       <tr>
         <td colspan="7">
-          <div class="empty">
-            No shoots found.
-          </div>
+          <div class="empty">No shoots found.</div>
         </td>
       </tr>
     `;
-
     return;
-
   }
 
-
-  list.forEach(
-    shoot => {
-
-      const tr =
-        document.createElement("tr");
-
-
-      tr.innerHTML = `
-
-        <td>
-          ${formatDate(shoot.date)}
-        </td>
-
-        <td>
-          <strong>
-            ${escapeHtml(shoot.client)}
-          </strong>
-        </td>
-
-        <td>
-          <span class="badge">
-            ${escapeHtml(shoot.function)}
-          </span>
-        </td>
-
-        <td>
-          ${escapeHtml(shoot.location || "-")}
-        </td>
-
-        <td>
-          ${escapeHtml(shoot.people || "-")}
-        </td>
-
-        <td>
-          ${formatTimeRange(shoot)}
-        </td>
-
-        <td>
-
-          <button
-            class="action-btn"
-            onclick="editShoot('${shoot.id}')"
-          >
-            Edit
-          </button>
-
-          <button
-            class="action-btn delete-btn"
-            onclick="deleteShoot('${shoot.id}')"
-          >
-            Delete
-          </button>
-
-        </td>
-
-      `;
-
-
-      tbody.appendChild(tr);
-
-    }
-  );
-
+  list.forEach(shoot => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${formatDate(shoot.date)}</td>
+      <td><strong>${escapeHtml(shoot.client)}</strong></td>
+      <td><span class="badge">${escapeHtml(shoot.function)}</span></td>
+      <td>${escapeHtml(shoot.location || "-")}</td>
+      <td>${escapeHtml(shoot.people || "-")}</td>
+      <td>${formatTimeRange(shoot)}</td>
+      <td>
+        <button class="action-btn" onclick="editShoot('${shoot.id}')">Edit</button>
+        <button class="action-btn delete-btn" onclick="deleteShoot('${shoot.id}')">Delete</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
 }
-
 
 function setFilter(filter, button) {
+  currentFilter = filter;
 
-  currentFilter =
-    filter;
-
-
-  document
-    .querySelectorAll(".filter-btn")
-    .forEach(btn => {
-      btn.classList.remove("active");
-    });
-
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
 
   if (button) {
-
-    button.classList.add(
-      "active"
-    );
-
+    button.classList.add("active");
   }
 
-
   renderAllShoots();
-
 }
-
 
 /* =========================================
    DASHBOARD
 ========================================= */
 
 function updateDashboard() {
+  const today = new Date();
+  today.setHours(0,0,0,0);
 
-  const today =
-    new Date();
+  const total = shoots.length;
+  const upcoming = shoots.filter(s => parseDate(s.date) >= today).length;
+  const month = shoots.filter(s => {
+    const d = parseDate(s.date);
+    return d.getMonth() === today.getMonth() && d.getFullYear() === today.getFullYear();
+  }).length;
 
-  today.setHours(
-    0,0,0,0
-  );
+  const todayString = formatDateInput(today);
+  const todayCount = shoots.filter(s => s.date === todayString).length;
 
+  document.getElementById("totalShoots").textContent = total;
+  document.getElementById("upcomingShoots").textContent = upcoming;
+  document.getElementById("monthShoots").textContent = month;
+  document.getElementById("todayShoots").textContent = todayCount;
 
-  const total =
-    shoots.length;
+  const list = shoots
+    .filter(s => parseDate(s.date) >= today)
+    .sort((a,b) => parseDate(a.date) - parseDate(b.date))
+    .slice(0,8);
 
-
-  const upcoming =
-    shoots.filter(
-      s =>
-        parseDate(s.date) >=
-        today
-    ).length;
-
-
-  const month =
-    shoots.filter(
-      s => {
-
-        const d =
-          parseDate(s.date);
-
-        return (
-          d.getMonth() ===
-            today.getMonth()
-          &&
-          d.getFullYear() ===
-            today.getFullYear()
-        );
-
-      }
-    ).length;
-
-
-  const todayString =
-    formatDateInput(today);
-
-
-  const todayCount =
-    shoots.filter(
-      s =>
-        s.date ===
-        todayString
-    ).length;
-
-
-  document
-    .getElementById("totalShoots")
-    .textContent =
-      total;
-
-
-  document
-    .getElementById("upcomingShoots")
-    .textContent =
-      upcoming;
-
-
-  document
-    .getElementById("monthShoots")
-    .textContent =
-      month;
-
-
-  document
-    .getElementById("todayShoots")
-    .textContent =
-      todayCount;
-
-
-  const list =
-    shoots
-      .filter(
-        s =>
-          parseDate(s.date) >=
-          today
-      )
-      .sort(
-        (a,b) =>
-          parseDate(a.date) -
-          parseDate(b.date)
-      )
-      .slice(0,8);
-
-
-  const tbody =
-    document.getElementById(
-      "dashboardShootList"
-    );
-
-
+  const tbody = document.getElementById("dashboardShootList");
   tbody.innerHTML = "";
 
-
   if (!list.length) {
-
     tbody.innerHTML = `
       <tr>
         <td colspan="6">
-          <div class="empty">
-            No upcoming shoots.
-          </div>
+          <div class="empty">No upcoming shoots.</div>
         </td>
       </tr>
     `;
-
     return;
-
   }
 
-
-  list.forEach(
-    shoot => {
-
-      const tr =
-        document.createElement("tr");
-
-
-      tr.innerHTML = `
-
-        <td>
-          ${formatDate(shoot.date)}
-        </td>
-
-        <td>
-          <strong>
-            ${escapeHtml(shoot.client)}
-          </strong>
-        </td>
-
-        <td>
-          <span class="badge">
-            ${escapeHtml(shoot.function)}
-          </span>
-        </td>
-
-        <td>
-          ${escapeHtml(shoot.location || "-")}
-        </td>
-
-        <td>
-          ${escapeHtml(shoot.people || "-")}
-        </td>
-
-        <td>
-          ${formatTimeRange(shoot)}
-        </td>
-
-      `;
-
-
-      tbody.appendChild(tr);
-
-    }
-  );
-
+  list.forEach(shoot => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${formatDate(shoot.date)}</td>
+      <td><strong>${escapeHtml(shoot.client)}</strong></td>
+      <td><span class="badge">${escapeHtml(shoot.function)}</span></td>
+      <td>${escapeHtml(shoot.location || "-")}</td>
+      <td>${escapeHtml(shoot.people || "-")}</td>
+      <td>${formatTimeRange(shoot)}</td>
+    `;
+    tbody.appendChild(tr);
+  });
 }
-
 
 /* =========================================
    HELPERS
 ========================================= */
 
 function formatDateInput(date) {
-
-  const y =
-    date.getFullYear();
-
-  const m =
-    String(
-      date.getMonth() + 1
-    ).padStart(2,"0");
-
-  const d =
-    String(
-      date.getDate()
-    ).padStart(2,"0");
-
-
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2,"0");
+  const d = String(date.getDate()).padStart(2,"0");
   return `${y}-${m}-${d}`;
-
 }
-
 
 function parseDate(value) {
-
-  if (!value)
-    return new Date(0);
-
-
-  const parts =
-    value.split("-");
-
-
-  return new Date(
-    Number(parts[0]),
-    Number(parts[1]) - 1,
-    Number(parts[2])
-  );
-
+  if (!value) return new Date(0);
+  const parts = value.split("-");
+  return new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
 }
-
 
 function formatDate(value) {
-
-  if (!value)
-    return "-";
-
-
-  const d =
-    parseDate(value);
-
-
-  return d.toLocaleDateString(
-    "en-IN",
-    {
-      day: "2-digit",
-      month: "short",
-      year: "numeric"
-    }
-  );
-
+  if (!value) return "-";
+  const d = parseDate(value);
+  return d.toLocaleDateString("en-IN", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric"
+  });
 }
-
 
 function formatTime(time) {
-
-  if (!time)
-    return "";
-
-
-  const parts =
-    time.split(":");
-
-
-  let hour =
-    Number(parts[0]);
-
-  const minute =
-    parts[1];
-
-
-  const ampm =
-    hour >= 12
-      ? "PM"
-      : "AM";
-
-
-  hour =
-    hour % 12 || 12;
-
-
+  if (!time) return "";
+  const parts = time.split(":");
+  let hour = Number(parts[0]);
+  const minute = parts[1];
+  const ampm = hour >= 12 ? "PM" : "AM";
+  hour = hour % 12 || 12;
   return `${hour}:${minute} ${ampm}`;
-
 }
-
 
 function formatTimeRange(shoot) {
-
-  if (
-    !shoot.start &&
-    !shoot.end
-  ) {
-
-    return shoot.reporting
-      ? "Report " +
-        formatTime(shoot.reporting)
-      : "-";
-
+  if (!shoot.start && !shoot.end) {
+    return shoot.reporting ? "Report " + formatTime(shoot.reporting) : "-";
   }
-
-
   return `
-    ${shoot.start
-      ? formatTime(shoot.start)
-      : ""}
-    ${
-      shoot.end
-        ? " - " +
-          formatTime(shoot.end)
-        : ""
-    }
+    ${shoot.start ? formatTime(shoot.start) : ""}
+    ${shoot.end ? " - " + formatTime(shoot.end) : ""}
   `;
-
 }
-
 
 function isSameDate(a,b) {
-
   return (
-    a.getFullYear() ===
-      b.getFullYear()
-    &&
-    a.getMonth() ===
-      b.getMonth()
-    &&
-    a.getDate() ===
-      b.getDate()
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate()
   );
-
 }
 
-
 function escapeHtml(text) {
-
-  if (text === null ||
-      text === undefined)
-    return "";
-
-
+  if (text === null || text === undefined) return "";
   return String(text)
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
-
 }
-
 
 /* =========================================
    RENDER EVERYTHING
 ========================================= */
 
 function renderEverything() {
-
   updateDashboard();
-
   renderCalendar();
-
   renderAllShoots();
-
 }
-
 
 /* =========================================
    ENTER KEY LOGIN
 ========================================= */
 
-document
-  .getElementById("loginPassword")
-  ?.addEventListener(
-    "keydown",
-    function(e) {
-
-      if (e.key === "Enter") {
-
-        login();
-
-      }
-
-    }
-  );
-
+document.getElementById("loginPassword")?.addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    login();
+  }
+});
 
 /* =========================================
    CLOSE MODAL ON BACKDROP
 ========================================= */
 
-document
-  .getElementById("shootModal")
-  .addEventListener(
-    "click",
-    function(e) {
-
-      if (
-        e.target === this
-      ) {
-
-        closeShootModal();
-
-      }
-
-    }
-  );
+document.getElementById("shootModal").addEventListener("click", function(e) {
+  if (e.target === this) {
+    closeShootModal();
+  }
+});
 
 </script>
 
