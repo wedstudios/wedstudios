@@ -1,0 +1,8 @@
+name = "wed-studios"
+compatibility_date = "2026-10-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "wed-studios-db"
+database_id = "0454059b-384b-4aa0-8a5a-4df1fd351f02D"
+migrations_dir = "migrations"
