@@ -40,8 +40,51 @@ textarea {
   font-family: inherit;
 }
 
-/* LOGIN */
+/* SUCCESS TOAST POPUP */
+.toast {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  background: #181820;
+  border: 1px solid var(--gold);
+  border-left: 5px solid var(--green);
+  color: white;
+  padding: 16px 22px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 9999;
+  transform: translateY(-50px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
 
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.toast-icon {
+  font-size: 20px;
+  color: var(--green);
+}
+
+.toast-text strong {
+  display: block;
+  font-size: 14px;
+  color: var(--gold);
+}
+
+.toast-text span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* LOGIN */
 .login-screen {
   min-height: 100vh;
   display: flex;
@@ -132,6 +175,11 @@ textarea {
   background: var(--gold2);
 }
 
+.primary-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .login-error {
   color: #ff7777;
   text-align: center;
@@ -141,7 +189,6 @@ textarea {
 }
 
 /* DASHBOARD */
-
 .dashboard {
   display: none;
   min-height: 100vh;
@@ -254,7 +301,6 @@ textarea {
 }
 
 /* STATS */
-
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -281,7 +327,6 @@ textarea {
 }
 
 /* CALENDAR */
-
 .calendar-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -394,7 +439,6 @@ textarea {
 }
 
 /* TABLE */
-
 .table-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -473,7 +517,6 @@ td {
 }
 
 /* MODAL */
-
 .modal {
   position: fixed;
   inset: 0;
@@ -555,7 +598,6 @@ td {
 }
 
 /* FILTERS */
-
 .filters {
   display: flex;
   gap: 8px;
@@ -578,7 +620,6 @@ td {
 }
 
 /* EMPTY */
-
 .empty {
   padding: 50px 20px;
   text-align: center;
@@ -586,7 +627,6 @@ td {
 }
 
 /* MOBILE */
-
 .mobile-menu {
   display: none;
   border: 1px solid var(--border);
@@ -700,8 +740,16 @@ td {
 
 <body>
 
-<!-- LOGIN -->
+<!-- SUCCESS TOAST POPUP -->
+<div class="toast" id="successToast">
+  <div class="toast-icon">✓</div>
+  <div class="toast-text">
+    <strong id="toastTitle">Success!</strong>
+    <span id="toastMsg">Shoot details saved and synced to Google Sheets.</span>
+  </div>
+</div>
 
+<!-- LOGIN -->
 <section class="login-screen" id="loginScreen">
   <div class="login-box">
     <div class="logo">
@@ -730,7 +778,6 @@ td {
 </section>
 
 <!-- DASHBOARD -->
-
 <section class="dashboard" id="dashboard">
   <header class="topbar">
     <div style="display:flex;align-items:center;gap:12px;">
@@ -904,7 +951,6 @@ td {
 </section>
 
 <!-- ADD / EDIT SHOOT MODAL -->
-
 <div class="modal" id="shootModal">
   <div class="modal-box">
     <div class="modal-header">
@@ -994,15 +1040,12 @@ td {
 </div>
 
 <script>
-
 /* =========================================
    LOGIN
 ========================================= */
-
 const ADMIN_USERNAME = "admin";
 const ADMIN_PASSWORD = "omji..";
 
-// PABBLY WEBHOOK URL
 const PABBLY_WEBHOOK_URL = "https://connect.pabbly.com/webhook-listener/webhook/IjU3NjMwNTZmMDYzZjA0MzM1MjZjNTUzZCI_3D_pc/IjU3NjcwNTY4MDYzMTA0M2M1MjZhNTUzMzUxMzci_pc";
 
 function login() {
@@ -1033,9 +1076,8 @@ if (sessionStorage.getItem("wedStudiosAdmin") === "loggedIn") {
 }
 
 /* =========================================
-   DATA
+   DATA & NOTIFICATION
 ========================================= */
-
 let shoots = JSON.parse(localStorage.getItem("wedStudiosShoots") || "[]");
 let currentDate = new Date();
 let currentFilter = "all";
@@ -1044,43 +1086,51 @@ function saveData() {
   localStorage.setItem("wedStudiosShoots", JSON.stringify(shoots));
 }
 
-// Function to send data to Pabbly Webhook
+// Show popup alert
+function showNotification(title, message) {
+  const toast = document.getElementById("successToast");
+  document.getElementById("toastTitle").textContent = title;
+  document.getElementById("toastMsg").textContent = message;
+
+  toast.classList.add("show");
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 4000);
+}
+
+// Send data to Pabbly Webhook
 async function sendToWebhook(shootData, actionType) {
+  const payload = {
+    action: actionType,
+    id: shootData.id,
+    shoot_date: shootData.date,
+    shoot_type: shootData.function,
+    client_name: shootData.client,
+    contact_number: shootData.phone,
+    venue_location: shootData.location,
+    number_of_people: shootData.people,
+    reporting_time: shootData.reporting,
+    start_time: shootData.start,
+    end_time: shootData.end,
+    estimated_amount: shootData.amount,
+    notes: shootData.notes,
+    timestamp: new Date().toISOString()
+  };
+
   try {
-    const payload = {
-      action: actionType, // 'create' or 'update'
-      id: shootData.id,
-      shoot_date: shootData.date,
-      shoot_type: shootData.function,
-      client_name: shootData.client,
-      contact_number: shootData.phone,
-      venue_location: shootData.location,
-      number_of_people: shootData.people,
-      reporting_time: shootData.reporting,
-      start_time: shootData.start,
-      end_time: shootData.end,
-      estimated_amount: shootData.amount,
-      notes: shootData.notes,
-      timestamp: new Date().toISOString()
-    };
-
-    fetch(PABBLY_WEBHOOK_URL, {
+    await fetch(PABBLY_WEBHOOK_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
-    }).catch(err => console.error("Webhook Background Error:", err));
-
+    });
   } catch (error) {
-    console.error("Error dispatching webhook:", error);
+    console.error("Webhook Error:", error);
   }
 }
 
 /* =========================================
    PAGE NAVIGATION
 ========================================= */
-
 function showPage(pageId, button) {
   document.querySelectorAll(".page").forEach(page => {
     page.classList.remove("active");
@@ -1110,12 +1160,15 @@ function toggleSidebar() {
 /* =========================================
    MODAL
 ========================================= */
-
 function openShootModal(date = null) {
   document.getElementById("shootModal").classList.add("show");
   document.getElementById("modalTitle").textContent = "Add New Shoot";
   document.getElementById("shootForm").reset();
   document.getElementById("editShootId").value = "";
+
+  const saveBtn = document.getElementById("saveBtn");
+  saveBtn.disabled = false;
+  saveBtn.textContent = "SAVE SHOOT";
 
   if (date) {
     document.getElementById("shootDate").value = date;
@@ -1129,11 +1182,14 @@ function closeShootModal() {
 }
 
 /* =========================================
-   SAVE SHOOT
+   SAVE SHOOT & TRIGGER WEBHOOK
 ========================================= */
-
-function saveShoot(event) {
+async function saveShoot(event) {
   event.preventDefault();
+
+  const saveBtn = document.getElementById("saveBtn");
+  saveBtn.disabled = true;
+  saveBtn.textContent = "Saving...";
 
   const id = document.getElementById("editShootId").value;
   const isUpdate = Boolean(id);
@@ -1164,8 +1220,14 @@ function saveShoot(event) {
 
   saveData();
 
-  // Send data to Pabbly Webhook
+  // Send to webhook in background
   sendToWebhook(shoot, isUpdate ? "update" : "create");
+
+  // Show Success Toast
+  showNotification(
+    "Shoot Saved Successfully!",
+    `${shoot.client} (${shoot.function}) details recorded.`
+  );
 
   closeShootModal();
   renderEverything();
@@ -1174,7 +1236,6 @@ function saveShoot(event) {
 /* =========================================
    EDIT SHOOT
 ========================================= */
-
 function editShoot(id) {
   const shoot = shoots.find(s => s.id === id);
   if (!shoot) return;
@@ -1193,12 +1254,15 @@ function editShoot(id) {
   document.getElementById("endTime").value = shoot.end || "";
   document.getElementById("shootAmount").value = shoot.amount || "";
   document.getElementById("shootNotes").value = shoot.notes || "";
+
+  const saveBtn = document.getElementById("saveBtn");
+  saveBtn.disabled = false;
+  saveBtn.textContent = "UPDATE SHOOT";
 }
 
 /* =========================================
    DELETE
 ========================================= */
-
 function deleteShoot(id) {
   const shoot = shoots.find(s => s.id === id);
   if (!shoot) return;
@@ -1206,15 +1270,15 @@ function deleteShoot(id) {
   if (!confirm(`Delete ${shoot.client} - ${shoot.function}?`)) return;
 
   shoots = shoots.filter(s => s.id !== id);
-
   saveData();
   renderEverything();
+
+  showNotification("Deleted!", `${shoot.client}'s shoot has been removed.`);
 }
 
 /* =========================================
    CALENDAR
 ========================================= */
-
 function renderCalendar() {
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -1228,7 +1292,6 @@ function renderCalendar() {
   const firstDay = new Date(year, month, 1);
   let startingDay = firstDay.getDay();
 
-  // Convert Sunday=0 to Monday=0
   startingDay = startingDay === 0 ? 6 : startingDay - 1;
 
   const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -1310,7 +1373,6 @@ function goToday() {
 /* =========================================
    ALL SHOOTS
 ========================================= */
-
 function renderAllShoots() {
   const tbody = document.getElementById("allShootsList");
   let list = [...shoots];
@@ -1403,7 +1465,6 @@ function setFilter(filter, button) {
 /* =========================================
    DASHBOARD
 ========================================= */
-
 function updateDashboard() {
   const today = new Date();
   today.setHours(0,0,0,0);
@@ -1459,7 +1520,6 @@ function updateDashboard() {
 /* =========================================
    HELPERS
 ========================================= */
-
 function formatDateInput(date) {
   const y = date.getFullYear();
   const m = String(date.getMonth() + 1).padStart(2,"0");
@@ -1524,7 +1584,6 @@ function escapeHtml(text) {
 /* =========================================
    RENDER EVERYTHING
 ========================================= */
-
 function renderEverything() {
   updateDashboard();
   renderCalendar();
@@ -1534,7 +1593,6 @@ function renderEverything() {
 /* =========================================
    ENTER KEY LOGIN
 ========================================= */
-
 document.getElementById("loginPassword")?.addEventListener("keydown", function(e) {
   if (e.key === "Enter") {
     login();
@@ -1544,13 +1602,11 @@ document.getElementById("loginPassword")?.addEventListener("keydown", function(e
 /* =========================================
    CLOSE MODAL ON BACKDROP
 ========================================= */
-
 document.getElementById("shootModal").addEventListener("click", function(e) {
   if (e.target === this) {
     closeShootModal();
   }
 });
-
 </script>
 
 </body>
