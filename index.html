@@ -1,3692 +1,2026 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
 
-<title>Wed Studios | Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description"
-content="Wed Studios premium wedding photography and studio management system">
+  <meta name="description"
+        content="Wed Studios — Premium Wedding Photography & Cinematic Films in Varanasi. Capturing timeless stories, emotions and beautiful frames.">
 
-<style>
+  <meta name="keywords"
+        content="Wed Studios, Wedding Photography Varanasi, Wedding Photographer Banaras, Pre Wedding Photography, Cinematic Wedding Films">
 
-/* =========================================================
-   RESET
-========================================================= */
+  <meta name="author" content="Wed Studios">
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+  <title>Wed Studios | Wedding Photography & Films</title>
 
-html{
-    scroll-behavior:smooth;
-}
+  <style>
+    /* =====================================================
+       RESET
+    ===================================================== */
 
-body{
-    font-family:Inter,Arial,Helvetica,sans-serif;
-    background:#0b0b0f;
-    color:#fff;
-    min-height:100vh;
-}
-
-button,
-input,
-select,
-textarea{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
-
-.hidden{
-    display:none!important;
-}
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-:root{
-
-    --bg:#0b0b0f;
-    --card:#13131a;
-    --card2:#181820;
-
-    --border:rgba(255,255,255,.08);
-
-    --text:#ffffff;
-    --muted:#8e8e9a;
-
-    --primary:#7c3aed;
-    --primary2:#2563eb;
-
-    --success:#22c55e;
-    --warning:#f59e0b;
-    --danger:#ef4444;
-
-    --gradient:linear-gradient(
-        135deg,
-        #7c3aed,
-        #2563eb
-    );
-}
-
-/* =========================================================
-   LOGIN
-========================================================= */
-
-.login-screen{
-
-    min-height:100vh;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
-
-    background:
-    radial-gradient(
-        circle at top left,
-        rgba(124,58,237,.18),
-        transparent 35%
-    ),
-    radial-gradient(
-        circle at bottom right,
-        rgba(37,99,235,.14),
-        transparent 35%
-    ),
-    var(--bg);
-}
-
-.login-box{
-
-    width:100%;
-    max-width:430px;
-
-    background:rgba(19,19,26,.88);
-
-    border:1px solid var(--border);
-
-    border-radius:24px;
-
-    padding:35px;
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.45);
-
-    backdrop-filter:blur(20px);
-}
-
-.logo{
-
-    font-size:27px;
-    font-weight:800;
-    letter-spacing:-1px;
-}
-
-.logo span{
-    background:var(--gradient);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-}
-
-.tagline{
-
-    color:var(--muted);
-    margin-top:7px;
-    margin-bottom:30px;
-}
-
-.form-group{
-    margin-bottom:18px;
-}
-
-.form-group label{
-
-    display:block;
-
-    margin-bottom:8px;
-
-    font-size:13px;
-    color:#cfcfd8;
-}
-
-.input{
-
-    width:100%;
-
-    padding:13px 14px;
-
-    background:#0d0d12;
-
-    border:1px solid var(--border);
-
-    border-radius:10px;
-
-    color:#fff;
-
-    outline:none;
-
-    transition:.2s;
-}
-
-.input:focus{
-    border-color:#7c3aed;
-    box-shadow:0 0 0 3px rgba(124,58,237,.12);
-}
-
-.btn{
-
-    border:0;
-
-    padding:12px 18px;
-
-    border-radius:10px;
-
-    color:#fff;
-
-    background:var(--gradient);
-
-    font-weight:600;
-
-    transition:.2s;
-}
-
-.btn:hover{
-    transform:translateY(-1px);
-    opacity:.95;
-}
-
-.btn.full{
-    width:100%;
-}
-
-.demo-login{
-
-    margin-top:20px;
-
-    padding:12px;
-
-    background:#101017;
-
-    border:1px solid var(--border);
-
-    border-radius:10px;
-
-    color:var(--muted);
-
-    font-size:12px;
-
-    line-height:1.6;
-}
-
-/* =========================================================
-   APP
-========================================================= */
-
-.app{
-
-    min-height:100vh;
-
-    display:flex;
-}
-
-/* =========================================================
-   SIDEBAR
-========================================================= */
-
-.sidebar{
-
-    width:250px;
-
-    position:fixed;
-
-    left:0;
-    top:0;
-    bottom:0;
-
-    background:#0e0e14;
-
-    border-right:1px solid var(--border);
-
-    padding:22px 15px;
-
-    z-index:100;
-
-    overflow-y:auto;
-}
-
-.sidebar-logo{
-
-    padding:5px 10px 25px;
-
-    font-size:22px;
-
-    font-weight:800;
-}
-
-.nav-section{
-
-    margin-top:22px;
-
-    margin-bottom:8px;
-
-    padding:0 11px;
-
-    color:#686875;
-
-    font-size:10px;
-
-    text-transform:uppercase;
-
-    letter-spacing:1.4px;
-}
-
-.nav-item{
-
-    width:100%;
-
-    border:0;
-
-    background:transparent;
-
-    color:#aaaab5;
-
-    padding:11px 12px;
-
-    border-radius:10px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:11px;
-
-    margin-bottom:3px;
-
-    text-align:left;
-
-    font-size:14px;
-
-    transition:.2s;
-}
-
-.nav-item:hover{
-
-    background:#171720;
-
-    color:#fff;
-}
-
-.nav-item.active{
-
-    background:rgba(124,58,237,.15);
-
-    color:#fff;
-}
-
-.nav-icon{
-
-    width:22px;
-
-    text-align:center;
-
-    opacity:.9;
-}
-
-.logout{
-
-    margin-top:20px;
-
-    color:#f87171;
-}
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-.main{
-
-    width:calc(100% - 250px);
-
-    margin-left:250px;
-
-    min-height:100vh;
-}
-
-.topbar{
-
-    height:70px;
-
-    border-bottom:1px solid var(--border);
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:0 28px;
-
-    background:rgba(11,11,15,.85);
-
-    backdrop-filter:blur(15px);
-
-    position:sticky;
-
-    top:0;
-
-    z-index:50;
-}
-
-.menu-btn{
-
-    display:none;
-
-    background:none;
-
-    border:0;
-
-    color:#fff;
-
-    font-size:24px;
-}
-
-.user-info{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-}
-
-.avatar{
-
-    width:38px;
-    height:38px;
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    background:var(--gradient);
-
-    font-size:13px;
-    font-weight:700;
-}
-
-.page{
-
-    display:none;
-
-    padding:28px;
-}
-
-.page.active{
-    display:block;
-}
-
-/* =========================================================
-   PAGE HEADER
-========================================================= */
-
-.page-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:15px;
-
-    margin-bottom:25px;
-}
-
-.page-title{
-
-    font-size:26px;
-
-    font-weight:750;
-
-    letter-spacing:-.5px;
-}
-
-.page-subtitle{
-
-    color:var(--muted);
-
-    font-size:13px;
-
-    margin-top:5px;
-}
-
-/* =========================================================
-   STAT CARDS
-========================================================= */
-
-.stats{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
-    gap:16px;
-
-    margin-bottom:22px;
-}
-
-.stat-card{
-
-    background:var(--card);
-
-    border:1px solid var(--border);
-
-    border-radius:16px;
-
-    padding:20px;
-
-    position:relative;
-
-    overflow:hidden;
-}
-
-.stat-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:100px;
-    height:100px;
-
-    right:-50px;
-    top:-50px;
-
-    background:var(--gradient);
-
-    opacity:.08;
-
-    border-radius:50%;
-}
-
-.stat-label{
-
-    color:var(--muted);
-
-    font-size:12px;
-
-    margin-bottom:9px;
-}
-
-.stat-number{
-
-    font-size:28px;
-
-    font-weight:750;
-}
-
-.stat-change{
-
-    margin-top:8px;
-
-    font-size:11px;
-
-    color:#6ee7b7;
-}
-
-/* =========================================================
-   CARDS
-========================================================= */
-
-.grid-2{
-
-    display:grid;
-
-    grid-template-columns:
-    1.5fr 1fr;
-
-    gap:18px;
-}
-
-.card{
-
-    background:var(--card);
-
-    border:1px solid var(--border);
-
-    border-radius:16px;
-
-    overflow:hidden;
-}
-
-.card-header{
-
-    padding:18px 20px;
-
-    border-bottom:1px solid var(--border);
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-}
-
-.card-title{
-
-    font-size:15px;
-
-    font-weight:650;
-}
-
-.card-body{
-    padding:20px;
-}
-
-/* =========================================================
-   TABLE
-========================================================= */
-
-.table-wrap{
-    overflow-x:auto;
-}
-
-table{
-
-    width:100%;
-
-    border-collapse:collapse;
-
-    min-width:650px;
-}
-
-th{
-
-    color:#777783;
-
-    font-size:11px;
-
-    font-weight:500;
-
-    text-align:left;
-
-    padding:13px 18px;
-
-    border-bottom:1px solid var(--border);
-}
-
-td{
-
-    padding:15px 18px;
-
-    border-bottom:1px solid rgba(255,255,255,.05);
-
-    font-size:13px;
-}
-
-tr:last-child td{
-    border-bottom:0;
-}
-
-.status{
-
-    display:inline-flex;
-
-    padding:5px 9px;
-
-    border-radius:20px;
-
-    font-size:10px;
-
-    font-weight:600;
-}
-
-.status.success{
-
-    color:#86efac;
-
-    background:rgba(34,197,94,.1);
-}
-
-.status.warning{
-
-    color:#fcd34d;
-
-    background:rgba(245,158,11,.1);
-}
-
-.status.info{
-
-    color:#93c5fd;
-
-    background:rgba(59,130,246,.1);
-}
-
-.status.danger{
-
-    color:#fca5a5;
-
-    background:rgba(239,68,68,.1);
-}
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-.toolbar{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:12px;
-
-    margin-bottom:18px;
-}
-
-.search{
-
-    max-width:320px;
-
-    width:100%;
-}
-
-/* =========================================================
-   QUICK ACTION
-========================================================= */
-
-.quick-actions{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
-    gap:12px;
-}
-
-.quick-action{
-
-    padding:16px;
-
-    background:#101017;
-
-    border:1px solid var(--border);
-
-    border-radius:12px;
-
-    color:#ddd;
-
-    text-align:left;
-
-    transition:.2s;
-}
-
-.quick-action:hover{
-
-    border-color:#7c3aed;
-
-    transform:translateY(-2px);
-}
-
-.quick-icon{
-
-    font-size:22px;
-
-    margin-bottom:10px;
-}
-
-.quick-title{
-
-    font-size:13px;
-
-    font-weight:600;
-}
-
-.quick-desc{
-
-    color:var(--muted);
-
-    font-size:10px;
-
-    margin-top:4px;
-}
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-.modal{
-
-    position:fixed;
-
-    inset:0;
-
-    background:rgba(0,0,0,.72);
-
-    display:none;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:20px;
-
-    z-index:500;
-
-    backdrop-filter:blur(8px);
-}
-
-.modal.show{
-    display:flex;
-}
-
-.modal-box{
-
-    width:100%;
-
-    max-width:550px;
-
-    max-height:90vh;
-
-    overflow-y:auto;
-
-    background:#14141c;
-
-    border:1px solid var(--border);
-
-    border-radius:18px;
-
-    padding:25px;
-}
-
-.modal-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:22px;
-}
-
-.close{
-
-    background:none;
-
-    border:0;
-
-    color:#888;
-
-    font-size:22px;
-}
-
-.form-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(2,1fr);
-
-    gap:15px;
-}
-
-.form-full{
-    grid-column:1/-1;
-}
-
-.form-actions{
-
-    display:flex;
-
-    justify-content:flex-end;
-
-    gap:10px;
-
-    margin-top:20px;
-}
-
-/* =========================================================
-   ACTIVITY
-========================================================= */
-
-.activity{
-
-    display:flex;
-
-    gap:12px;
-
-    padding:12px 0;
-
-    border-bottom:1px solid rgba(255,255,255,.05);
-}
-
-.activity:last-child{
-    border-bottom:0;
-}
-
-.activity-dot{
-
-    width:8px;
-    height:8px;
-
-    margin-top:5px;
-
-    border-radius:50%;
-
-    background:#7c3aed;
-
-    flex-shrink:0;
-}
-
-.activity-text{
-
-    font-size:12px;
-
-    color:#ccc;
-}
-
-.activity-time{
-
-    margin-top:3px;
-
-    font-size:10px;
-
-    color:#666;
-}
-
-/* =========================================================
-   EMPTY STATE
-========================================================= */
-
-.empty{
-
-    text-align:center;
-
-    padding:50px 20px;
-
-    color:var(--muted);
-}
-
-.empty-icon{
-
-    font-size:40px;
-
-    margin-bottom:12px;
-}
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:1000px){
-
-    .stats{
-
-        grid-template-columns:
-        repeat(2,1fr);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .quick-actions{
-
-        grid-template-columns:
-        repeat(2,1fr);
+    html {
+      scroll-behavior: smooth;
     }
 
-    .grid-2{
-
-        grid-template-columns:1fr;
-    }
-}
-
-@media(max-width:750px){
-
-    .sidebar{
-
-        transform:translateX(-100%);
-
-        transition:.25s;
+    body {
+      background: #08080c;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    .sidebar.open{
-
-        transform:translateX(0);
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .main{
-
-        width:100%;
-
-        margin-left:0;
+    img {
+      width: 100%;
+      display: block;
     }
 
-    .menu-btn{
-
-        display:block;
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
     }
 
-    .topbar{
+    :root {
+      --bg: #08080c;
+      --bg2: #101016;
+      --card: #14141c;
+      --card2: #191922;
 
-        padding:0 16px;
+      --gold: #d7b56d;
+      --gold-light: #f3d995;
+      --gold-dark: #9d7b35;
+
+      --text: #ffffff;
+      --muted: #aaaab5;
+
+      --border: rgba(255,255,255,0.10);
+
+      --gradient:
+        linear-gradient(
+          135deg,
+          #f4db9b,
+          #b48a42,
+          #f4db9b
+        );
     }
 
-    .page{
 
-        padding:18px 14px;
+    /* =====================================================
+       GLOBAL
+    ===================================================== */
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
     }
 
-    .page-title{
-
-        font-size:22px;
+    .section {
+      padding: 100px 0;
     }
 
-    .stats{
-
-        grid-template-columns:1fr 1fr;
-
-        gap:10px;
+    .section-title {
+      text-align: center;
+      margin-bottom: 55px;
     }
 
-    .stat-card{
-
-        padding:15px;
+    .section-title span {
+      display: block;
+      color: var(--gold);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 12px;
     }
 
-    .stat-number{
-
-        font-size:23px;
+    .section-title h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(34px, 5vw, 58px);
+      font-weight: 400;
+      line-height: 1.1;
     }
 
-    .page-header{
-
-        align-items:flex-start;
-
-        flex-direction:column;
+    .section-title p {
+      max-width: 650px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: 15px;
     }
 
-    .toolbar{
 
-        flex-direction:column;
+    /* =====================================================
+       NAVBAR
+    ===================================================== */
 
-        align-items:stretch;
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+
+      background: rgba(8,8,12,0.72);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
-    .search{
+    .navbar {
+      height: 78px;
 
-        max-width:none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .form-grid{
-
-        grid-template-columns:1fr;
+    .logo {
+      font-family: Georgia, serif;
+      font-size: 27px;
+      letter-spacing: 2px;
     }
 
-    .form-full{
-
-        grid-column:auto;
-    }
-}
-
-@media(max-width:480px){
-
-    .stats{
-
-        grid-template-columns:1fr 1fr;
+    .logo span {
+      color: var(--gold);
     }
 
-    .quick-actions{
-
-        grid-template-columns:1fr;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
     }
 
-    .login-box{
-
-        padding:25px 20px;
+    .nav-links a {
+      color: #ddd;
+      font-size: 14px;
+      transition: 0.3s;
     }
-}
 
-</style>
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-btn {
+      padding: 10px 18px;
+      border: 1px solid var(--gold);
+      color: var(--gold) !important;
+      border-radius: 30px;
+    }
+
+    .nav-btn:hover {
+      background: var(--gold);
+      color: #08080c !important;
+    }
+
+    .menu-btn {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+
+      display: flex;
+      align-items: center;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,0.88),
+          rgba(0,0,0,0.45),
+          rgba(0,0,0,0.82)
+        ),
+        url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2200&q=85")
+        center/cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background:
+        radial-gradient(
+          circle at 70% 40%,
+          rgba(215,181,109,0.12),
+          transparent 35%
+        );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 750px;
+      padding-top: 70px;
+    }
+
+    .hero-small {
+      color: var(--gold);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-weight: 400;
+
+      font-size: clamp(48px, 8vw, 92px);
+      line-height: 0.98;
+
+      margin-bottom: 28px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero p {
+      color: #ddd;
+      max-width: 600px;
+      font-size: 17px;
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 14px 25px;
+      border-radius: 40px;
+
+      border: 1px solid var(--gold);
+      cursor: pointer;
+
+      transition: 0.3s;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #090909;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      color: var(--gold);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--gold);
+      color: #090909;
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      z-index: 3;
+
+      color: #aaa;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+
+    /* =====================================================
+       ABOUT
+    ===================================================== */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-image img {
+      height: 600px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .about-image::after {
+      content: "";
+
+      position: absolute;
+      width: 70%;
+      height: 70%;
+
+      right: -20px;
+      bottom: -20px;
+
+      border: 1px solid var(--gold);
+      z-index: -1;
+    }
+
+    .about-text span {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+    }
+
+    .about-text h2 {
+      font-family: Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.1;
+      margin: 15px 0 25px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .signature {
+      margin-top: 30px;
+      font-family: cursive;
+      font-size: 27px;
+      color: var(--gold);
+    }
+
+
+    /* =====================================================
+       SERVICES
+    ===================================================== */
+
+    .services {
+      background: #0d0d12;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      position: relative;
+
+      padding: 38px 30px;
+
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.055),
+        rgba(255,255,255,0.015)
+      );
+
+      border: 1px solid var(--border);
+
+      min-height: 250px;
+
+      transition: 0.35s;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: "";
+
+      position: absolute;
+      width: 120px;
+      height: 120px;
+
+      background: var(--gold);
+      filter: blur(70px);
+      opacity: 0;
+
+      right: -30px;
+      top: -30px;
+
+      transition: 0.35s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(215,181,109,0.5);
+    }
+
+    .service-card:hover::before {
+      opacity: 0.12;
+    }
+
+    .service-icon {
+      width: 55px;
+      height: 55px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+
+      color: var(--gold);
+      font-size: 22px;
+
+      margin-bottom: 25px;
+    }
+
+    .service-card h3 {
+      font-family: Georgia, serif;
+      font-size: 25px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+
+    /* =====================================================
+       PORTFOLIO
+    ===================================================== */
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .portfolio-item {
+      position: relative;
+      height: 390px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .portfolio-item:nth-child(2),
+    .portfolio-item:nth-child(5) {
+      height: 480px;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.7s;
+    }
+
+    .portfolio-item::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          transparent 45%,
+          rgba(0,0,0,0.82)
+        );
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .portfolio-caption {
+      position: absolute;
+      z-index: 2;
+
+      left: 25px;
+      bottom: 25px;
+    }
+
+    .portfolio-caption span {
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .portfolio-caption h3 {
+      font-family: Georgia, serif;
+      font-size: 25px;
+      font-weight: 400;
+    }
+
+
+    /* =====================================================
+       STATS
+    ===================================================== */
+
+    .stats {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat {
+      text-align: center;
+      padding: 45px 15px;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat h3 {
+      font-family: Georgia, serif;
+      color: var(--gold);
+      font-size: 42px;
+      font-weight: 400;
+    }
+
+    .stat p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+
+    /* =====================================================
+       PROCESS
+    ===================================================== */
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .process-card {
+      padding: 30px 20px;
+      border-top: 1px solid var(--gold);
+    }
+
+    .process-number {
+      color: var(--gold);
+      font-family: Georgia, serif;
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .process-card h3 {
+      font-family: Georgia, serif;
+      font-size: 23px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .process-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+
+    /* =====================================================
+       TESTIMONIAL
+    ===================================================== */
+
+    .testimonial {
+      background:
+        linear-gradient(
+          rgba(8,8,12,0.86),
+          rgba(8,8,12,0.95)
+        ),
+        url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2000&q=80")
+        center/cover fixed;
+    }
+
+    .quote {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .quote-mark {
+      color: var(--gold);
+      font-family: Georgia, serif;
+      font-size: 80px;
+      line-height: 0.5;
+    }
+
+    .quote p {
+      font-family: Georgia, serif;
+      font-size: clamp(23px, 4vw, 37px);
+      font-style: italic;
+      line-height: 1.4;
+      margin: 35px 0;
+    }
+
+    .quote span {
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+
+    /* =====================================================
+       CTA
+    ===================================================== */
+
+    .cta {
+      padding: 110px 0;
+      text-align: center;
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(215,181,109,0.12),
+          transparent 50%
+        );
+    }
+
+    .cta h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 22px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+
+    /* =====================================================
+       CONTACT
+    ===================================================== */
+
+    .contact {
+      background: #0d0d12;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 60px;
+    }
+
+    .contact-info h3 {
+      font-family: Georgia, serif;
+      font-size: 35px;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .contact-detail {
+      margin-bottom: 18px;
+    }
+
+    .contact-detail span {
+      display: block;
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .contact-detail a,
+    .contact-detail div {
+      color: #ddd;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 15px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+
+      padding: 16px 17px;
+
+      background: #15151d;
+      border: 1px solid var(--border);
+
+      color: white;
+      outline: none;
+
+      border-radius: 3px;
+
+      transition: 0.3s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      border-color: var(--gold);
+    }
+
+    .contact-form textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .contact-form option {
+      background: #15151d;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer {
+      padding: 55px 0 25px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      padding-bottom: 35px;
+    }
+
+    .footer-logo {
+      font-family: Georgia, serif;
+      font-size: 30px;
+    }
+
+    .footer-logo span {
+      color: var(--gold);
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+    }
+
+    .socials a {
+      width: 42px;
+      height: 42px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid var(--border);
+      border-radius: 50%;
+
+      font-size: 13px;
+
+      transition: 0.3s;
+    }
+
+    .socials a:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .footer-bottom {
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      color: #777;
+      font-size: 12px;
+    }
+
+
+    /* =====================================================
+       SCROLL ANIMATION
+    ===================================================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+        position: fixed;
+        top: 78px;
+        right: -100%;
+
+        width: 270px;
+        height: calc(100vh - 78px);
+
+        background: #0b0b10;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 35px 25px;
+
+        transition: 0.35s;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image img {
+        height: 500px;
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .section {
+        padding: 75px 0;
+      }
+
+      .navbar {
+        height: 70px;
+      }
+
+      .nav-links {
+        top: 70px;
+        height: calc(100vh - 70px);
+      }
+
+      .hero {
+        min-height: 92vh;
+      }
+
+      .hero-content {
+        padding-top: 80px;
+      }
+
+      .hero h1 {
+        font-size: 54px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .service-grid,
+      .portfolio-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-item,
+      .portfolio-item:nth-child(2),
+      .portfolio-item:nth-child(5) {
+        height: 420px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .stat:nth-child(2) {
+        border-right: none;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top,
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .about-image::after {
+        right: -10px;
+        bottom: -10px;
+      }
+
+    }
+
+  </style>
 </head>
+
 
 <body>
 
 
-<!-- ========================================================
-     LOGIN SCREEN
-========================================================= -->
+  <!-- =====================================================
+       NAVBAR
+  ====================================================== -->
 
-<section id="loginScreen" class="login-screen">
+  <header>
 
-    <div class="login-box">
+    <div class="container navbar">
 
-        <div class="logo">
-            Wed <span>Studios</span>
-        </div>
+      <a href="#home" class="logo">
+        Wed <span>Studios</span>
+      </a>
 
-        <div class="tagline">
-            Wedding Photography & Studio Management
-        </div>
-
-        <form id="loginForm">
-
-            <div class="form-group">
-
-                <label>Email / Username</label>
-
-                <input
-                    id="loginEmail"
-                    class="input"
-                    type="text"
-                    placeholder="Enter email"
-                    required
-                >
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Password</label>
-
-                <input
-                    id="loginPassword"
-                    class="input"
-                    type="password"
-                    placeholder="Enter password"
-                    required
-                >
-
-            </div>
-
-            <button class="btn full" type="submit">
-                Login
-            </button>
-
-        </form>
-
-        <div class="demo-login">
-
-            <strong>Demo Login</strong><br>
-
-            Admin: admin@wedstudios.in / 123456<br>
-            Staff: staff@wedstudios.in / 123456<br>
-            Client: client@wedstudios.in / 123456
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ========================================================
-     APPLICATION
-========================================================= -->
-
-<section id="app" class="app hidden">
-
-
-<!-- ========================================================
-     SIDEBAR
-========================================================= -->
-
-<aside id="sidebar" class="sidebar">
-
-    <div class="sidebar-logo">
-        Wed <span style="
-        background:linear-gradient(135deg,#7c3aed,#2563eb);
-        -webkit-background-clip:text;
-        color:transparent;">
-        Studios
-        </span>
-    </div>
-
-
-    <div class="nav-section">
-        Main
-    </div>
-
-    <button
-        class="nav-item active"
-        data-page="dashboard"
-    >
-        <span class="nav-icon">⌂</span>
-        Dashboard
-    </button>
-
-
-    <div class="nav-section">
-        Management
-    </div>
-
-    <button
-        class="nav-item"
-        data-page="clients"
-    >
-        <span class="nav-icon">♙</span>
-        Clients
-    </button>
-
-    <button
-        class="nav-item"
-        data-page="projects"
-    >
-        <span class="nav-icon">▣</span>
-        Projects
-    </button>
-
-    <button
-        class="nav-item"
-        data-page="work"
-    >
-        <span class="nav-icon">✓</span>
-        Work / Tasks
-    </button>
-
-    <button
-        class="nav-item"
-        data-page="payments"
-    >
-        <span class="nav-icon">₹</span>
-        Payments
-    </button>
-
-    <button
-        class="nav-item"
-        data-page="calendar"
-    >
-        <span class="nav-icon">▦</span>
-        Calendar
-    </button>
-
-
-    <div id="adminNav">
-
-        <div class="nav-section">
-            Administration
-        </div>
-
-        <button
-            class="nav-item"
-            data-page="users"
-        >
-            <span class="nav-icon">♟</span>
-            Users
-        </button>
-
-        <button
-            class="nav-item"
-            data-page="reports"
-        >
-            <span class="nav-icon">◫</span>
-            Reports
-        </button>
-
-        <button
-            class="nav-item"
-            data-page="settings"
-        >
-            <span class="nav-icon">⚙</span>
-            Settings
-        </button>
-
-    </div>
-
-
-    <button
-        id="logoutBtn"
-        class="nav-item logout"
-    >
-        <span class="nav-icon">↪</span>
-        Logout
-    </button>
-
-</aside>
-
-
-<!-- ========================================================
-     MAIN
-========================================================= -->
-
-<main class="main">
-
-
-<!-- TOPBAR -->
-
-<header class="topbar">
-
-    <button
-        id="menuBtn"
-        class="menu-btn"
-    >
+      <button class="menu-btn" id="menuBtn">
         ☰
-    </button>
+      </button>
 
-    <div>
-        <div
-            id="topPageTitle"
-            style="font-size:14px;font-weight:600;"
-        >
-            Dashboard
-        </div>
-    </div>
+      <ul class="nav-links" id="navLinks">
 
-    <div class="user-info">
+        <li>
+          <a href="#home">Home</a>
+        </li>
 
-        <div>
+        <li>
+          <a href="#about">About</a>
+        </li>
 
-            <div
-                id="userName"
-                style="
-                font-size:13px;
-                font-weight:600;
-                text-align:right;
-                "
-            >
-                Admin
-            </div>
+        <li>
+          <a href="#services">Services</a>
+        </li>
 
-            <div
-                id="userRole"
-                style="
-                font-size:10px;
-                color:#777;
-                text-align:right;
-                "
-            >
-                Administrator
-            </div>
+        <li>
+          <a href="#portfolio">Portfolio</a>
+        </li>
 
-        </div>
+        <li>
+          <a href="#contact" class="nav-btn">
+            Contact
+          </a>
+        </li>
 
-        <div
-            id="userAvatar"
-            class="avatar"
-        >
-            A
-        </div>
+      </ul>
 
     </div>
 
-</header>
+  </header>
 
 
-<!-- ========================================================
-     DASHBOARD PAGE
-========================================================= -->
 
-<section
-    id="page-dashboard"
-    class="page active"
->
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
 
-    <div class="page-header">
+  <section class="hero" id="home">
 
-        <div>
+    <div class="container">
 
-            <div class="page-title">
-                Dashboard
-            </div>
+      <div class="hero-content reveal">
 
-            <div class="page-subtitle">
-                Welcome back. Here's what's happening with Wed Studios.
-            </div>
+        <div class="hero-small">
+          Wedding Photography & Films
+        </div>
+
+        <h1>
+          Your Story.<br>
+          Our <span>Frame.</span>
+        </h1>
+
+        <p>
+          We capture the emotions, people and little moments
+          that make your wedding story truly yours.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#portfolio" class="btn btn-primary">
+            Explore Our Work
+          </a>
+
+          <a href="#contact" class="btn btn-outline">
+            Plan Your Wedding
+          </a>
 
         </div>
+
+      </div>
 
     </div>
 
+    <div class="scroll-down">
+      Scroll to explore
+    </div>
 
-    <div class="stats">
-
-        <div class="stat-card">
-
-            <div class="stat-label">
-                Total Clients
-            </div>
-
-            <div class="stat-number" id="statClients">
-                24
-            </div>
-
-            <div class="stat-change">
-                +4 this month
-            </div>
-
-        </div>
+  </section>
 
 
-        <div class="stat-card">
 
-            <div class="stat-label">
-                Active Projects
-            </div>
+  <!-- =====================================================
+       ABOUT
+  ====================================================== -->
 
-            <div class="stat-number">
-                12
-            </div>
+  <section class="section" id="about">
 
-            <div class="stat-change">
-                3 due this week
-            </div>
+    <div class="container">
+
+      <div class="about-grid">
+
+        <div class="about-image reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1200&q=85"
+            alt="Wedding photography"
+          >
 
         </div>
 
 
-        <div class="stat-card">
+        <div class="about-text reveal">
 
-            <div class="stat-label">
-                Pending Work
-            </div>
+          <span>About Wed Studios</span>
 
-            <div class="stat-number">
-                18
-            </div>
+          <h2>
+            More Than A Wedding.
+            A Lifetime Of Memories.
+          </h2>
 
-            <div class="stat-change">
-                5 high priority
-            </div>
+          <p>
+            Every wedding has its own rhythm, emotions and
+            beautiful little stories. At Wed Studios, we believe
+            our job is not just to photograph them, but to preserve
+            how they felt.
+          </p>
 
-        </div>
+          <p>
+            From intimate moments to grand celebrations, we create
+            timeless photographs and cinematic films that you can
+            revisit for years to come.
+          </p>
 
-
-        <div class="stat-card">
-
-            <div class="stat-label">
-                Pending Payments
-            </div>
-
-            <div class="stat-number">
-                ₹1.8L
-            </div>
-
-            <div class="stat-change">
-                From 7 projects
-            </div>
+          <div class="signature">
+            Wed Studios
+          </div>
 
         </div>
+
+      </div>
 
     </div>
 
+  </section>
 
-    <!-- QUICK ACTIONS -->
 
-    <div class="card" style="margin-bottom:18px;">
 
-        <div class="card-header">
+  <!-- =====================================================
+       SERVICES
+  ====================================================== -->
 
-            <div class="card-title">
-                Quick Actions
-            </div>
+  <section class="section services" id="services">
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <span>What We Do</span>
+
+        <h2>
+          Crafted For Your Story
+        </h2>
+
+        <p>
+          From the first frame to the final film,
+          everything is created with intention.
+        </p>
+
+      </div>
+
+
+      <div class="service-grid">
+
+
+        <div class="service-card reveal">
+
+          <div class="service-icon">
+            ✦
+          </div>
+
+          <h3>
+            Candid Photography
+          </h3>
+
+          <p>
+            Real emotions, natural expressions and
+            unscripted moments captured beautifully.
+          </p>
+
+        </div>
+
+
+        <div class="service-card reveal">
+
+          <div class="service-icon">
+            ◇
+          </div>
+
+          <h3>
+            Cinematic Films
+          </h3>
+
+          <p>
+            Emotional wedding films crafted with
+            cinematic visuals, music and storytelling.
+          </p>
 
         </div>
 
-        <div class="card-body">
 
-            <div class="quick-actions">
+        <div class="service-card reveal">
 
-                <button
-                    class="quick-action"
-                    onclick="openModal('clientModal')"
-                >
+          <div class="service-icon">
+            ○
+          </div>
 
-                    <div class="quick-icon">
-                        ♙
-                    </div>
+          <h3>
+            Traditional Photography
+          </h3>
 
-                    <div class="quick-title">
-                        Add Client
-                    </div>
-
-                    <div class="quick-desc">
-                        Create new client
-                    </div>
-
-                </button>
-
-
-                <button
-                    class="quick-action"
-                    onclick="openModal('projectModal')"
-                >
-
-                    <div class="quick-icon">
-                        ▣
-                    </div>
-
-                    <div class="quick-title">
-                        New Project
-                    </div>
-
-                    <div class="quick-desc">
-                        Create project
-                    </div>
-
-                </button>
-
-
-                <button
-                    class="quick-action"
-                    onclick="openModal('workModal')"
-                >
-
-                    <div class="quick-icon">
-                        ✓
-                    </div>
-
-                    <div class="quick-title">
-                        Assign Work
-                    </div>
-
-                    <div class="quick-desc">
-                        Create task
-                    </div>
-
-                </button>
-
-
-                <button
-                    class="quick-action"
-                    data-page-target="calendar"
-                >
-
-                    <div class="quick-icon">
-                        ▦
-                    </div>
-
-                    <div class="quick-title">
-                        Calendar
-                    </div>
-
-                    <div class="quick-desc">
-                        View schedule
-                    </div>
-
-                </button>
-
-            </div>
+          <p>
+            Every important ritual, family moment and
+            celebration documented with care.
+          </p>
 
         </div>
+
+
+        <div class="service-card reveal">
+
+          <div class="service-icon">
+            ♢
+          </div>
+
+          <h3>
+            Pre-Wedding
+          </h3>
+
+          <p>
+            Beautiful locations, natural chemistry and
+            cinematic storytelling designed around you.
+          </p>
+
+        </div>
+
+
+        <div class="service-card reveal">
+
+          <div class="service-icon">
+            ☆
+          </div>
+
+          <h3>
+            Wedding Albums
+          </h3>
+
+          <p>
+            Premium handcrafted albums that turn your
+            photographs into something timeless.
+          </p>
+
+        </div>
+
+
+        <div class="service-card reveal">
+
+          <div class="service-icon">
+            △
+          </div>
+
+          <h3>
+            Drone Coverage
+          </h3>
+
+          <p>
+            Aerial perspectives that add scale and
+            cinematic depth to your celebration.
+          </p>
+
+        </div>
+
+      </div>
 
     </div>
 
+  </section>
 
-    <div class="grid-2">
 
 
-        <!-- UPCOMING -->
+  <!-- =====================================================
+       PORTFOLIO
+  ====================================================== -->
 
-        <div class="card">
+  <section class="section" id="portfolio">
 
-            <div class="card-header">
+    <div class="container">
 
-                <div class="card-title">
-                    Upcoming Projects
-                </div>
+      <div class="section-title reveal">
 
-                <button
-                    class="btn"
-                    style="padding:7px 10px;font-size:10px;"
-                    data-page-target="projects"
-                >
-                    View All
-                </button>
+        <span>Selected Stories</span>
 
-            </div>
+        <h2>
+          Moments We Love
+        </h2>
 
-            <div class="table-wrap">
+        <p>
+          A glimpse into the celebrations and stories
+          we've had the privilege to capture.
+        </p>
 
-                <table>
+      </div>
 
-                    <thead>
 
-                        <tr>
+      <div class="portfolio-grid">
 
-                            <th>
-                                Project
-                            </th>
 
-                            <th>
-                                Date
-                            </th>
+        <div class="portfolio-item reveal">
 
-                            <th>
-                                Status
-                            </th>
+          <img
+            src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=85"
+            alt="Wedding couple"
+          >
 
-                        </tr>
+          <div class="portfolio-caption">
 
-                    </thead>
+            <span>Wedding</span>
 
-                    <tbody>
+            <h3>
+              Forever Begins
+            </h3>
 
-                        <tr>
-
-                            <td>
-                                Rahul & Priya
-                            </td>
-
-                            <td>
-                                05 Oct 2026
-                            </td>
-
-                            <td>
-                                <span class="status info">
-                                    Upcoming
-                                </span>
-                            </td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>
-                                Aman & Neha
-                            </td>
-
-                            <td>
-                                08 Oct 2026
-                            </td>
-
-                            <td>
-                                <span class="status warning">
-                                    In Progress
-                                </span>
-                            </td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>
-                                Arjun & Riya
-                            </td>
-
-                            <td>
-                                12 Oct 2026
-                            </td>
-
-                            <td>
-                                <span class="status info">
-                                    Upcoming
-                                </span>
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
+          </div>
 
         </div>
 
 
-        <!-- ACTIVITY -->
+        <div class="portfolio-item reveal">
 
-        <div class="card">
+          <img
+            src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1000&q=85"
+            alt="Bride portrait"
+          >
 
-            <div class="card-header">
+          <div class="portfolio-caption">
 
-                <div class="card-title">
-                    Recent Activity
-                </div>
+            <span>Bridal</span>
 
-            </div>
+            <h3>
+              Her Moment
+            </h3>
 
-            <div class="card-body">
-
-                <div class="activity">
-
-                    <div class="activity-dot"></div>
-
-                    <div>
-
-                        <div class="activity-text">
-                            New client Rahul added
-                        </div>
-
-                        <div class="activity-time">
-                            10 minutes ago
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="activity">
-
-                    <div class="activity-dot"></div>
-
-                    <div>
-
-                        <div class="activity-text">
-                            Wedding highlight assigned to Aman
-                        </div>
-
-                        <div class="activity-time">
-                            1 hour ago
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="activity">
-
-                    <div class="activity-dot"></div>
-
-                    <div>
-
-                        <div class="activity-text">
-                            ₹25,000 payment received
-                        </div>
-
-                        <div class="activity-time">
-                            Yesterday
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
+          </div>
 
         </div>
+
+
+        <div class="portfolio-item reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=85"
+            alt="Wedding celebration"
+          >
+
+          <div class="portfolio-caption">
+
+            <span>Celebration</span>
+
+            <h3>
+              Together
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="portfolio-item reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1000&q=85"
+            alt="Wedding ceremony"
+          >
+
+          <div class="portfolio-caption">
+
+            <span>Ceremony</span>
+
+            <h3>
+              Sacred Promises
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="portfolio-item reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1000&q=85"
+            alt="Wedding details"
+          >
+
+          <div class="portfolio-caption">
+
+            <span>Details</span>
+
+            <h3>
+              Little Things
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="portfolio-item reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1544078751-58fee2d8a03b?auto=format&fit=crop&w=1000&q=85"
+            alt="Couple portrait"
+          >
+
+          <div class="portfolio-caption">
+
+            <span>Couple</span>
+
+            <h3>
+              Just Us
+            </h3>
+
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
 
-</section>
+  </section>
 
 
-<!-- ========================================================
-     CLIENTS
-========================================================= -->
 
-<section
-    id="page-clients"
-    class="page"
->
+  <!-- =====================================================
+       STATS
+  ====================================================== -->
 
-    <div class="page-header">
+  <section class="stats">
 
-        <div>
+    <div class="container">
 
-            <div class="page-title">
-                Clients
-            </div>
+      <div class="stats-grid">
 
-            <div class="page-subtitle">
-                Manage all your wedding clients.
-            </div>
-
+        <div class="stat reveal">
+          <h3>100+</h3>
+          <p>Stories Captured</p>
         </div>
 
-        <button
-            class="btn"
-            onclick="openModal('clientModal')"
-        >
-            + Add Client
-        </button>
+        <div class="stat reveal">
+          <h3>500+</h3>
+          <p>Events Covered</p>
+        </div>
+
+        <div class="stat reveal">
+          <h3>50K+</h3>
+          <p>Moments Preserved</p>
+        </div>
+
+        <div class="stat reveal">
+          <h3>∞</h3>
+          <p>Memories To Relive</p>
+        </div>
+
+      </div>
 
     </div>
 
+  </section>
 
-    <div class="toolbar">
 
-        <input
-            class="input search"
-            id="clientSearch"
-            placeholder="Search clients..."
-        >
+
+  <!-- =====================================================
+       PROCESS
+  ====================================================== -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <span>Our Process</span>
+
+        <h2>
+          Simple. Personal. Beautiful.
+        </h2>
+
+      </div>
+
+
+      <div class="process-grid">
+
+
+        <div class="process-card reveal">
+
+          <div class="process-number">
+            01
+          </div>
+
+          <h3>
+            Connect
+          </h3>
+
+          <p>
+            Tell us about your wedding, your vision
+            and the moments that matter to you.
+          </p>
+
+        </div>
+
+
+        <div class="process-card reveal">
+
+          <div class="process-number">
+            02
+          </div>
+
+          <h3>
+            Plan
+          </h3>
+
+          <p>
+            We understand your schedule and build
+            a photography plan around your celebration.
+          </p>
+
+        </div>
+
+
+        <div class="process-card reveal">
+
+          <div class="process-number">
+            03
+          </div>
+
+          <h3>
+            Capture
+          </h3>
+
+          <p>
+            Our team documents the real emotions,
+            details and unforgettable moments.
+          </p>
+
+        </div>
+
+
+        <div class="process-card reveal">
+
+          <div class="process-number">
+            04
+          </div>
+
+          <h3>
+            Relive
+          </h3>
+
+          <p>
+            Your photographs and films bring you
+            back to those moments, again and again.
+          </p>
+
+        </div>
+
+      </div>
 
     </div>
 
+  </section>
 
-    <div class="card">
 
-        <div class="table-wrap">
 
-            <table id="clientsTable">
+  <!-- =====================================================
+       TESTIMONIAL
+  ====================================================== -->
 
-                <thead>
+  <section class="section testimonial">
 
-                    <tr>
+    <div class="container">
 
-                        <th>
-                            Client
-                        </th>
+      <div class="quote reveal">
 
-                        <th>
-                            Phone
-                        </th>
-
-                        <th>
-                            Event Date
-                        </th>
-
-                        <th>
-                            Package
-                        </th>
-
-                        <th>
-                            Status
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody id="clientsBody">
-
-                    <tr>
-
-                        <td>
-                            Rahul Kumar
-                        </td>
-
-                        <td>
-                            98XXXXXX21
-                        </td>
-
-                        <td>
-                            05 Oct 2026
-                        </td>
-
-                        <td>
-                            Premium Wedding
-                        </td>
-
-                        <td>
-                            <span class="status success">
-                                Active
-                            </span>
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>
-                            Aman Singh
-                        </td>
-
-                        <td>
-                            97XXXXXX55
-                        </td>
-
-                        <td>
-                            12 Oct 2026
-                        </td>
-
-                        <td>
-                            Cinematic
-                        </td>
-
-                        <td>
-                            <span class="status success">
-                                Active
-                            </span>
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
+        <div class="quote-mark">
+          “
         </div>
+
+        <p>
+          The best photographs are not just the ones
+          you look at. They are the ones that make you
+          feel something all over again.
+        </p>
+
+        <span>
+          Wed Studios
+        </span>
+
+      </div>
 
     </div>
 
-</section>
+  </section>
 
 
-<!-- ========================================================
-     PROJECTS
-========================================================= -->
 
-<section
-    id="page-projects"
-    class="page"
->
+  <!-- =====================================================
+       CTA
+  ====================================================== -->
 
-    <div class="page-header">
+  <section class="cta">
 
-        <div>
+    <div class="container reveal">
 
-            <div class="page-title">
-                Projects
-            </div>
+      <h2>
+        Let's Tell Your Story.
+      </h2>
 
-            <div class="page-subtitle">
-                Manage wedding and photography projects.
-            </div>
+      <p>
+        Your wedding deserves to be remembered beautifully.
+      </p>
 
-        </div>
-
-        <button
-            class="btn"
-            onclick="openModal('projectModal')"
-        >
-            + New Project
-        </button>
+      <a href="#contact" class="btn btn-primary">
+        Start A Conversation
+      </a>
 
     </div>
 
+  </section>
 
-    <div class="card">
 
-        <div class="table-wrap">
 
-            <table>
+  <!-- =====================================================
+       CONTACT
+  ====================================================== -->
 
-                <thead>
+  <section class="section contact" id="contact">
 
-                    <tr>
+    <div class="container">
 
-                        <th>
-                            Project
-                        </th>
+      <div class="section-title reveal">
 
-                        <th>
-                            Client
-                        </th>
+        <span>Get In Touch</span>
 
-                        <th>
-                            Event
-                        </th>
+        <h2>
+          Let's Create Something Beautiful
+        </h2>
 
-                        <th>
-                            Date
-                        </th>
+      </div>
 
-                        <th>
-                            Amount
-                        </th>
 
-                        <th>
-                            Status
-                        </th>
+      <div class="contact-grid">
 
-                    </tr>
 
-                </thead>
+        <div class="contact-info reveal">
 
-                <tbody>
+          <h3>
+            Your story starts here.
+          </h3>
 
-                    <tr>
+          <p>
+            Tell us a little about your wedding and
+            we'll get back to you with availability
+            and package details.
+          </p>
 
-                        <td>
-                            Rahul & Priya
-                        </td>
 
-                        <td>
-                            Rahul Kumar
-                        </td>
+          <div class="contact-detail">
 
-                        <td>
-                            Wedding
-                        </td>
-
-                        <td>
-                            05 Oct 2026
-                        </td>
-
-                        <td>
-                            ₹85,000
-                        </td>
-
-                        <td>
-                            <span class="status info">
-                                Upcoming
-                            </span>
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>
-                            Aman & Neha
-                        </td>
-
-                        <td>
-                            Aman Singh
-                        </td>
-
-                        <td>
-                            Pre Wedding
-                        </td>
-
-                        <td>
-                            12 Oct 2026
-                        </td>
-
-                        <td>
-                            ₹45,000
-                        </td>
-
-                        <td>
-                            <span class="status warning">
-                                In Progress
-                            </span>
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ========================================================
-     WORK
-========================================================= -->
-
-<section
-    id="page-work"
-    class="page"
->
-
-    <div class="page-header">
-
-        <div>
-
-            <div class="page-title">
-                Work / Tasks
-            </div>
-
-            <div class="page-subtitle">
-                Assign and track studio work.
-            </div>
-
-        </div>
-
-        <button
-            class="btn"
-            onclick="openModal('workModal')"
-        >
-            + Assign Work
-        </button>
-
-    </div>
-
-
-    <div class="stats">
-
-        <div class="stat-card">
-
-            <div class="stat-label">
-                Pending
-            </div>
-
-            <div class="stat-number">
-                8
-            </div>
-
-        </div>
-
-        <div class="stat-card">
-
-            <div class="stat-label">
-                In Progress
-            </div>
-
-            <div class="stat-number">
-                6
-            </div>
-
-        </div>
-
-        <div class="stat-card">
-
-            <div class="stat-label">
-                Review
-            </div>
-
-            <div class="stat-number">
-                3
-            </div>
-
-        </div>
-
-        <div class="stat-card">
-
-            <div class="stat-label">
-                Completed
-            </div>
-
-            <div class="stat-number">
-                21
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="table-wrap">
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-                            Work
-                        </th>
-
-                        <th>
-                            Project
-                        </th>
-
-                        <th>
-                            Assigned To
-                        </th>
-
-                        <th>
-                            Deadline
-                        </th>
-
-                        <th>
-                            Priority
-                        </th>
-
-                        <th>
-                            Status
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>
-                            Wedding Highlight
-                        </td>
-
-                        <td>
-                            Rahul & Priya
-                        </td>
-
-                        <td>
-                            Aman
-                        </td>
-
-                        <td>
-                            08 Oct
-                        </td>
-
-                        <td>
-                            <span class="status danger">
-                                High
-                            </span>
-                        </td>
-
-                        <td>
-                            <span class="status warning">
-                                In Progress
-                            </span>
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>
-                            Album Design
-                        </td>
-
-                        <td>
-                            Aman & Neha
-                        </td>
-
-                        <td>
-                            Rohit
-                        </td>
-
-                        <td>
-                            10 Oct
-                        </td>
-
-                        <td>
-                            <span class="status info">
-                                Normal
-                            </span>
-                        </td>
-
-                        <td>
-                            <span class="status info">
-                                Assigned
-                            </span>
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ========================================================
-     PAYMENTS
-========================================================= -->
-
-<section
-    id="page-payments"
-    class="page"
->
-
-    <div class="page-header">
-
-        <div>
-
-            <div class="page-title">
-                Payments
-            </div>
-
-            <div class="page-subtitle">
-                Track project payments and pending amounts.
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="stats">
-
-        <div class="stat-card">
-
-            <div class="stat-label">
-                Total Revenue
-            </div>
-
-            <div class="stat-number">
-                ₹4.8L
-            </div>
-
-        </div>
-
-        <div class="stat-card">
-
-            <div class="stat-label">
-                Received
-            </div>
-
-            <div class="stat-number">
-                ₹3.0L
-            </div>
-
-        </div>
-
-        <div class="stat-card">
-
-            <div class="stat-label">
-                Pending
-            </div>
-
-            <div class="stat-number">
-                ₹1.8L
-            </div>
-
-        </div>
-
-        <div class="stat-card">
-
-            <div class="stat-label">
-                Projects
-            </div>
-
-            <div class="stat-number">
-                12
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="table-wrap">
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-                            Project
-                        </th>
-
-                        <th>
-                            Total
-                        </th>
-
-                        <th>
-                            Paid
-                        </th>
-
-                        <th>
-                            Pending
-                        </th>
-
-                        <th>
-                            Status
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>
-                            Rahul & Priya
-                        </td>
-
-                        <td>
-                            ₹85,000
-                        </td>
-
-                        <td>
-                            ₹50,000
-                        </td>
-
-                        <td>
-                            ₹35,000
-                        </td>
-
-                        <td>
-                            <span class="status warning">
-                                Pending
-                            </span>
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ========================================================
-     CALENDAR
-========================================================= -->
-
-<section
-    id="page-calendar"
-    class="page"
->
-
-    <div class="page-header">
-
-        <div>
-
-            <div class="page-title">
-                Calendar
-            </div>
-
-            <div class="page-subtitle">
-                Shoots, events and deadlines.
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="card-body">
-
-            <div class="empty">
-
-                <div class="empty-icon">
-                    ▦
-                </div>
-
-                <div>
-                    Calendar module ready
-                </div>
-
-                <small>
-                    Full calendar functionality will be connected to the database.
-                </small>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ========================================================
-     USERS
-========================================================= -->
-
-<section
-    id="page-users"
-    class="page"
->
-
-    <div class="page-header">
-
-        <div>
-
-            <div class="page-title">
-                Users
-            </div>
-
-            <div class="page-subtitle">
-                Manage admin, staff and client accounts.
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="table-wrap">
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-                            Name
-                        </th>
-
-                        <th>
-                            Email
-                        </th>
-
-                        <th>
-                            Role
-                        </th>
-
-                        <th>
-                            Status
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>
-                            Rupesh Ranjan
-                        </td>
-
-                        <td>
-                            admin@wedstudios.in
-                        </td>
-
-                        <td>
-                            Admin
-                        </td>
-
-                        <td>
-                            <span class="status success">
-                                Active
-                            </span>
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>
-                            Aman
-                        </td>
-
-                        <td>
-                            staff@wedstudios.in
-                        </td>
-
-                        <td>
-                            Staff
-                        </td>
-
-                        <td>
-                            <span class="status success">
-                                Active
-                            </span>
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ========================================================
-     REPORTS
-========================================================= -->
-
-<section
-    id="page-reports"
-    class="page"
->
-
-    <div class="page-header">
-
-        <div>
-
-            <div class="page-title">
-                Reports
-            </div>
-
-            <div class="page-subtitle">
-                Business and project reports.
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="grid-2">
-
-        <div class="card">
-
-            <div class="card-header">
-
-                <div class="card-title">
-                    Project Summary
-                </div>
-
-            </div>
-
-            <div class="card-body">
-
-                <div class="empty">
-
-                    <div class="empty-icon">
-                        ◫
-                    </div>
-
-                    Reports module ready
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-header">
-
-                <div class="card-title">
-                    Revenue Summary
-                </div>
-
-            </div>
-
-            <div class="card-body">
-
-                <div class="empty">
-
-                    <div class="empty-icon">
-                        ₹
-                    </div>
-
-                    Financial reports will appear here.
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ========================================================
-     SETTINGS
-========================================================= -->
-
-<section
-    id="page-settings"
-    class="page"
->
-
-    <div class="page-header">
-
-        <div>
-
-            <div class="page-title">
-                Settings
-            </div>
-
-            <div class="page-subtitle">
-                Manage Wed Studios system settings.
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="card-body">
-
-            <div class="form-group">
-
-                <label>
-                    Studio Name
-                </label>
-
-                <input
-                    class="input"
-                    value="Wed Studios"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Website
-                </label>
-
-                <input
-                    class="input"
-                    value="westudios.in"
-                >
-
-            </div>
-
-
-            <button class="btn">
-                Save Settings
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-</main>
-
-</section>
-
-
-<!-- ========================================================
-     ADD CLIENT MODAL
-========================================================= -->
-
-<div
-    id="clientModal"
-    class="modal"
->
-
-    <div class="modal-box">
-
-        <div class="modal-header">
-
-            <div class="page-title" style="font-size:20px;">
-                Add Client
-            </div>
-
-            <button
-                class="close"
-                onclick="closeModal('clientModal')"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <form id="clientForm">
-
-            <div class="form-grid">
-
-                <div class="form-group">
-
-                    <label>
-                        Client Name
-                    </label>
-
-                    <input
-                        class="input"
-                        id="clientName"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Phone
-                    </label>
-
-                    <input
-                        class="input"
-                        id="clientPhone"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Email
-                    </label>
-
-                    <input
-                        class="input"
-                        id="clientEmail"
-                        type="email"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Event Date
-                    </label>
-
-                    <input
-                        class="input"
-                        id="clientDate"
-                        type="date"
-                    >
-
-                </div>
-
-
-                <div class="form-group form-full">
-
-                    <label>
-                        Package
-                    </label>
-
-                    <input
-                        class="input"
-                        id="clientPackage"
-                        placeholder="Wedding / Pre Wedding / Cinematic..."
-                    >
-
-                </div>
-
-
-                <div class="form-group form-full">
-
-                    <label>
-                        Notes
-                    </label>
-
-                    <textarea
-                        class="input"
-                        id="clientNotes"
-                        rows="4"
-                    ></textarea>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-actions">
-
-                <button
-                    type="button"
-                    class="btn"
-                    style="background:#22222b;"
-                    onclick="closeModal('clientModal')"
-                >
-                    Cancel
-                </button>
-
-                <button
-                    type="submit"
-                    class="btn"
-                >
-                    Save Client
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
-
-</div>
-
-
-<!-- ========================================================
-     PROJECT MODAL
-========================================================= -->
-
-<div
-    id="projectModal"
-    class="modal"
->
-
-    <div class="modal-box">
-
-        <div class="modal-header">
-
-            <div class="page-title" style="font-size:20px;">
-                New Project
-            </div>
-
-            <button
-                class="close"
-                onclick="closeModal('projectModal')"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <form id="projectForm">
-
-            <div class="form-grid">
-
-                <div class="form-group">
-
-                    <label>
-                        Project Name
-                    </label>
-
-                    <input
-                        class="input"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Client
-                    </label>
-
-                    <select class="input">
-
-                        <option>
-                            Select Client
-                        </option>
-
-                        <option>
-                            Rahul Kumar
-                        </option>
-
-                        <option>
-                            Aman Singh
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Event Type
-                    </label>
-
-                    <select class="input">
-
-                        <option>
-                            Wedding
-                        </option>
-
-                        <option>
-                            Pre Wedding
-                        </option>
-
-                        <option>
-                            Engagement
-                        </option>
-
-                        <option>
-                            Reception
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Event Date
-                    </label>
-
-                    <input
-                        class="input"
-                        type="date"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Total Amount
-                    </label>
-
-                    <input
-                        class="input"
-                        type="number"
-                        placeholder="₹"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Location
-                    </label>
-
-                    <input
-                        class="input"
-                        placeholder="Varanasi..."
-                    >
-
-                </div>
-
-            </div>
-
-
-            <div class="form-actions">
-
-                <button
-                    type="button"
-                    class="btn"
-                    style="background:#22222b;"
-                    onclick="closeModal('projectModal')"
-                >
-                    Cancel
-                </button>
-
-                <button
-                    type="submit"
-                    class="btn"
-                >
-                    Create Project
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
-
-</div>
-
-
-<!-- ========================================================
-     WORK MODAL
-========================================================= -->
-
-<div
-    id="workModal"
-    class="modal"
->
-
-    <div class="modal-box">
-
-        <div class="modal-header">
-
-            <div class="page-title" style="font-size:20px;">
-                Assign Work
-            </div>
-
-            <button
-                class="close"
-                onclick="closeModal('workModal')"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <form id="workForm">
-
-            <div class="form-grid">
-
-                <div class="form-group form-full">
-
-                    <label>
-                        Work Title
-                    </label>
-
-                    <input
-                        class="input"
-                        placeholder="Wedding Highlight"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Project
-                    </label>
-
-                    <select class="input">
-
-                        <option>
-                            Rahul & Priya
-                        </option>
-
-                        <option>
-                            Aman & Neha
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Assign To
-                    </label>
-
-                    <select class="input">
-
-                        <option>
-                            Aman
-                        </option>
-
-                        <option>
-                            Rohit
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Deadline
-                    </label>
-
-                    <input
-                        class="input"
-                        type="date"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Priority
-                    </label>
-
-                    <select class="input">
-
-                        <option>
-                            Normal
-                        </option>
-
-                        <option>
-                            High
-                        </option>
-
-                        <option>
-                            Urgent
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group form-full">
-
-                    <label>
-                        Description
-                    </label>
-
-                    <textarea
-                        class="input"
-                        rows="4"
-                    ></textarea>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-actions">
-
-                <button
-                    type="button"
-                    class="btn"
-                    style="background:#22222b;"
-                    onclick="closeModal('workModal')"
-                >
-                    Cancel
-                </button>
-
-                <button
-                    type="submit"
-                    class="btn"
-                >
-                    Assign Work
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
-
-</div>
-
-
-<script>
-
-/* =========================================================
-   DEMO USERS
-   TEMPORARY ONLY
-========================================================= */
-
-const demoUsers = {
-
-    "admin@wedstudios.in":{
-        password:"123456",
-        name:"Rupesh Ranjan",
-        role:"admin",
-        roleName:"Administrator"
-    },
-
-    "staff@wedstudios.in":{
-        password:"123456",
-        name:"Aman",
-        role:"staff",
-        roleName:"Staff"
-    },
-
-    "client@wedstudios.in":{
-        password:"123456",
-        name:"Rahul Kumar",
-        role:"client",
-        roleName:"Client"
-    }
-
-};
-
-
-/* =========================================================
-   LOGIN
-========================================================= */
-
-document
-.getElementById("loginForm")
-.addEventListener("submit",function(e){
-
-    e.preventDefault();
-
-    const email =
-        document
-        .getElementById("loginEmail")
-        .value
-        .trim()
-        .toLowerCase();
-
-    const password =
-        document
-        .getElementById("loginPassword")
-        .value;
-
-    const user = demoUsers[email];
-
-    if(!user || user.password !== password){
-
-        alert("Invalid login details.");
-
-        return;
-    }
-
-    sessionStorage.setItem(
-        "wedUser",
-        JSON.stringify({
-            email,
-            ...user
-        })
-    );
-
-    showApp(user);
-
-});
-
-
-/* =========================================================
-   SHOW APP
-========================================================= */
-
-function showApp(user){
-
-    document
-    .getElementById("loginScreen")
-    .classList
-    .add("hidden");
-
-    document
-    .getElementById("app")
-    .classList
-    .remove("hidden");
-
-
-    document
-    .getElementById("userName")
-    .textContent = user.name;
-
-    document
-    .getElementById("userRole")
-    .textContent = user.roleName;
-
-    document
-    .getElementById("userAvatar")
-    .textContent =
-        user.name
-        .charAt(0)
-        .toUpperCase();
-
-
-    /* ADMIN */
-
-    if(user.role === "admin"){
-
-        document
-        .getElementById("adminNav")
-        .classList
-        .remove("hidden");
-
-    }
-
-
-    /* STAFF */
-
-    if(user.role === "staff"){
-
-        document
-        .querySelectorAll(
-            '[data-page="users"],[data-page="reports"],[data-page="settings"]'
-        )
-        .forEach(el=>{
-            el.classList.add("hidden");
-        });
-
-    }
-
-
-    /* CLIENT */
-
-    if(user.role === "client"){
-
-        document
-        .querySelectorAll(
-            '[data-page="users"],[data-page="reports"],[data-page="settings"],[data-page="payments"]'
-        )
-        .forEach(el=>{
-            el.classList.add("hidden");
-        });
-
-    }
-
-}
-
-
-/* =========================================================
-   CHECK SESSION
-========================================================= */
-
-const savedUser =
-    sessionStorage.getItem("wedUser");
-
-if(savedUser){
-
-    try{
-
-        showApp(
-            JSON.parse(savedUser)
-        );
-
-    }catch(e){
-
-        sessionStorage.removeItem("wedUser");
-
-    }
-
-}
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-document
-.getElementById("logoutBtn")
-.addEventListener("click",function(){
-
-    sessionStorage.removeItem("wedUser");
-
-    location.reload();
-
-});
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-document
-.querySelectorAll(".nav-item[data-page]")
-.forEach(button=>{
-
-    button.addEventListener("click",function(){
-
-        const page =
-            this.dataset.page;
-
-        navigate(page);
-
-    });
-
-});
-
-
-/* =========================================================
-   NAVIGATE
-========================================================= */
-
-function navigate(page){
-
-    document
-    .querySelectorAll(".page")
-    .forEach(p=>{
-        p.classList.remove("active");
-    });
-
-    const target =
-        document.getElementById(
-            "page-" + page
-        );
-
-    if(target){
-
-        target.classList.add("active");
-
-    }
-
-
-    document
-    .querySelectorAll(".nav-item[data-page]")
-    .forEach(btn=>{
-
-        btn.classList.remove("active");
-
-        if(btn.dataset.page === page){
-
-            btn.classList.add("active");
-
-        }
-
-    });
-
-
-    const title =
-        page.charAt(0).toUpperCase()
-        + page.slice(1);
-
-    document
-    .getElementById("topPageTitle")
-    .textContent = title;
-
-
-    document
-    .getElementById("sidebar")
-    .classList
-    .remove("open");
-
-}
-
-
-/* =========================================================
-   QUICK PAGE BUTTONS
-========================================================= */
-
-document
-.querySelectorAll("[data-page-target]")
-.forEach(button=>{
-
-    button.addEventListener("click",function(){
-
-        navigate(
-            this.dataset.pageTarget
-        );
-
-    });
-
-});
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-document
-.getElementById("menuBtn")
-.addEventListener("click",function(){
-
-    document
-    .getElementById("sidebar")
-    .classList
-    .toggle("open");
-
-});
-
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-function openModal(id){
-
-    document
-    .getElementById(id)
-    .classList
-    .add("show");
-
-}
-
-
-function closeModal(id){
-
-    document
-    .getElementById(id)
-    .classList
-    .remove("show");
-
-}
-
-
-/* =========================================================
-   CLIENT FORM - TEMPORARY FRONTEND DEMO
-========================================================= */
-
-document
-.getElementById("clientForm")
-.addEventListener("submit",function(e){
-
-    e.preventDefault();
-
-    const name =
-        document
-        .getElementById("clientName")
-        .value;
-
-    const phone =
-        document
-        .getElementById("clientPhone")
-        .value;
-
-    const date =
-        document
-        .getElementById("clientDate")
-        .value;
-
-    const packageName =
-        document
-        .getElementById("clientPackage")
-        .value;
-
-
-    if(!name || !phone){
-
-        alert("Please enter client name and phone.");
-
-        return;
-
-    }
-
-
-    const row =
-        document
-        .getElementById("clientsBody")
-        .insertRow();
-
-
-    row.innerHTML = `
-
-        <td>${escapeHTML(name)}</td>
-
-        <td>${escapeHTML(phone)}</td>
-
-        <td>${escapeHTML(date || "-")}</td>
-
-        <td>${escapeHTML(packageName || "-")}</td>
-
-        <td>
-            <span class="status success">
-                Active
+            <span>
+              Location
             </span>
-        </td>
 
-    `;
+            <div>
+              Varanasi, Uttar Pradesh, India
+            </div>
 
-
-    closeModal("clientModal");
-
-    this.reset();
-
-    alert(
-        "Client added in demo mode. D1 connection will be added next."
-    );
-
-});
+          </div>
 
 
-/* =========================================================
-   PROJECT FORM
-========================================================= */
+          <div class="contact-detail">
 
-document
-.getElementById("projectForm")
-.addEventListener("submit",function(e){
+            <span>
+              Email
+            </span>
 
-    e.preventDefault();
+            <a href="mailto:hello@westudios.in">
+              hello@westudios.in
+            </a>
 
-    closeModal("projectModal");
-
-    this.reset();
-
-    alert(
-        "Project created in demo mode. D1 API will be connected next."
-    );
-
-});
+          </div>
 
 
-/* =========================================================
-   WORK FORM
-========================================================= */
+          <div class="contact-detail">
 
-document
-.getElementById("workForm")
-.addEventListener("submit",function(e){
+            <span>
+              Instagram
+            </span>
 
-    e.preventDefault();
+            <a
+              href="https://instagram.com/"
+              target="_blank"
+              rel="noopener"
+            >
+              @wedstudios
+            </a>
 
-    closeModal("workModal");
+          </div>
 
-    this.reset();
-
-    alert(
-        "Work assigned in demo mode. D1 API will be connected next."
-    );
-
-});
+        </div>
 
 
-/* =========================================================
-   SEARCH CLIENTS
-========================================================= */
 
-document
-.getElementById("clientSearch")
-.addEventListener("input",function(){
+        <form
+          class="contact-form reveal"
+          id="contactForm"
+        >
 
-    const value =
-        this.value
-        .toLowerCase();
+          <div class="form-row">
 
-    document
-    .querySelectorAll(
-        "#clientsBody tr"
-    )
-    .forEach(row=>{
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              required
+            >
 
-        row.style.display =
-            row.innerText
-            .toLowerCase()
-            .includes(value)
-            ? ""
-            : "none";
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone Number"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-row">
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+            >
+
+            <select name="service" required>
+
+              <option value="">
+                Select Service
+              </option>
+
+              <option>
+                Wedding Photography
+              </option>
+
+              <option>
+                Cinematic Wedding Film
+              </option>
+
+              <option>
+                Pre-Wedding
+              </option>
+
+              <option>
+                Traditional Photography
+              </option>
+
+              <option>
+                Wedding Album
+              </option>
+
+              <option>
+                Other
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <input
+            type="text"
+            name="date"
+            placeholder="Wedding Date"
+          >
+
+
+          <textarea
+            name="message"
+            placeholder="Tell us about your wedding..."
+            required
+          ></textarea>
+
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+          >
+            Send Inquiry
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-top">
+
+        <div class="footer-logo">
+          Wed <span>Studios</span>
+        </div>
+
+
+        <div class="socials">
+
+          <a
+            href="https://instagram.com/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Instagram"
+          >
+            IG
+          </a>
+
+          <a
+            href="#"
+            aria-label="Facebook"
+          >
+            FB
+          </a>
+
+          <a
+            href="#"
+            aria-label="YouTube"
+          >
+            YT
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <div>
+          © <span id="year"></span> Wed Studios.
+          All rights reserved.
+        </div>
+
+        <div>
+          Forever Begins With A Beautiful Frame.
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script>
+
+    /* ==========================================
+       MOBILE MENU
+    ========================================== */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+
+      navLinks.classList.toggle("active");
+
+      if (navLinks.classList.contains("active")) {
+        menuBtn.innerHTML = "✕";
+      } else {
+        menuBtn.innerHTML = "☰";
+      }
 
     });
 
-});
 
+    /* Close mobile menu after clicking link */
 
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
+    document.querySelectorAll(".nav-links a").forEach(link => {
 
-function escapeHTML(value){
+      link.addEventListener("click", () => {
 
-    return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+        navLinks.classList.remove("active");
+        menuBtn.innerHTML = "☰";
 
-}
-
-
-/* =========================================================
-   CLOSE MODAL ON BACKDROP
-========================================================= */
-
-document
-.querySelectorAll(".modal")
-.forEach(modal=>{
-
-    modal.addEventListener("click",function(e){
-
-        if(e.target === modal){
-
-            modal.classList.remove("show");
-
-        }
+      });
 
     });
 
-});
 
-</script>
+
+    /* ==========================================
+       SCROLL REVEAL
+    ========================================== */
+
+    const observer = new IntersectionObserver(
+
+      entries => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("active");
+
+          }
+
+        });
+
+      },
+
+      {
+        threshold: 0.12
+      }
+
+    );
+
+
+    document.querySelectorAll(".reveal").forEach(element => {
+
+      observer.observe(element);
+
+    });
+
+
+
+    /* ==========================================
+       FOOTER YEAR
+    ========================================== */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+
+    /* ==========================================
+       CONTACT FORM
+    ========================================== */
+
+    const contactForm =
+      document.getElementById("contactForm");
+
+    contactForm.addEventListener("submit", function(e) {
+
+      e.preventDefault();
+
+      const button =
+        contactForm.querySelector("button");
+
+      const originalText = button.innerText;
+
+      button.innerText = "Sending...";
+
+      button.disabled = true;
+
+
+      /*
+        अभी यह frontend-only है।
+
+        बाद में यहां Cloudflare Worker/API
+        जोड़कर enquiry को database में save
+        किया जा सकता है।
+      */
+
+      setTimeout(() => {
+
+        button.innerText = "Inquiry Sent ✓";
+
+        contactForm.reset();
+
+        setTimeout(() => {
+
+          button.innerText = originalText;
+          button.disabled = false;
+
+        }, 2500);
+
+      }, 1000);
+
+    });
+
+
+  </script>
 
 </body>
 </html>
