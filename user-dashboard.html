@@ -1,0 +1,897 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wed Studios | Staff Dashboard</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0909;
+  --card:#131010;
+  --card2:#181414;
+  --text:#f7f1e9;
+  --muted:#a69d96;
+  --gold:#d7b37a;
+  --gold2:#e5c898;
+  --line:rgba(255,255,255,.10);
+  --danger:#d87575;
+  --success:#7bc79b;
+  --font-serif:"Cormorant Garamond",Georgia,serif;
+  --font-sans:"DM Sans",sans-serif;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-sans);
+  min-height:100vh;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(10,9,9,.88);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav{
+  width:min(1200px,92%);
+  height:75px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-family:var(--font-serif);
+  font-size:27px;
+  letter-spacing:2px;
+  font-weight:600;
+}
+
+.logo span{
+  color:var(--gold);
+}
+
+.user-area{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.user-name{
+  text-align:right;
+}
+
+.user-name strong{
+  display:block;
+  font-size:13px;
+}
+
+.user-name small{
+  color:var(--gold);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+}
+
+.logout{
+  border:1px solid var(--line);
+  background:transparent;
+  color:var(--muted);
+  padding:9px 14px;
+  cursor:pointer;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.logout:hover{
+  color:var(--gold);
+  border-color:var(--gold);
+}
+
+.container{
+  width:min(1200px,92%);
+  margin:auto;
+}
+
+.hero{
+  padding:70px 0 45px;
+}
+
+.eyebrow{
+  color:var(--gold);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  margin-bottom:10px;
+}
+
+h1,h2,h3{
+  font-family:var(--font-serif);
+  font-weight:500;
+}
+
+.hero h1{
+  font-size:clamp(45px,6vw,72px);
+  line-height:1;
+}
+
+.hero p{
+  color:var(--muted);
+  margin-top:12px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-bottom:40px;
+}
+
+.stat{
+  background:var(--card);
+  border:1px solid var(--line);
+  padding:25px;
+}
+
+.stat small{
+  color:var(--muted);
+  display:block;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  font-size:10px;
+  margin-bottom:8px;
+}
+
+.stat strong{
+  font-family:var(--font-serif);
+  color:var(--gold);
+  font-size:34px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  padding:30px;
+  margin-bottom:30px;
+}
+
+.card-title{
+  font-family:var(--font-serif);
+  font-size:30px;
+  margin-bottom:25px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+label{
+  color:#d9d0c8;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  margin-bottom:7px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  background:#0d0c0c;
+  border:1px solid var(--line);
+  color:#fff;
+  padding:13px;
+  outline:none;
+  font-family:var(--font-sans);
+  font-size:13px;
+}
+
+textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:var(--gold);
+}
+
+.save-btn{
+  margin-top:20px;
+  background:var(--gold);
+  color:#111;
+  border:1px solid var(--gold);
+  padding:14px 25px;
+  cursor:pointer;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:10px;
+  font-weight:600;
+}
+
+.save-btn:hover{
+  background:var(--gold2);
+}
+
+.message{
+  display:none;
+  margin-top:15px;
+  padding:12px;
+  font-size:12px;
+}
+
+.success{
+  color:var(--success);
+  border:1px solid rgba(123,199,155,.25);
+  background:rgba(123,199,155,.05);
+}
+
+.error{
+  color:var(--danger);
+  border:1px solid rgba(216,117,117,.25);
+  background:rgba(216,117,117,.05);
+}
+
+.table-wrap{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:700px;
+}
+
+th{
+  text-align:left;
+  color:var(--gold);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  padding:13px;
+  border-bottom:1px solid var(--line);
+}
+
+td{
+  padding:15px 13px;
+  color:#d9d0c8;
+  font-size:13px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.amount{
+  color:var(--gold);
+}
+
+.empty{
+  text-align:center;
+  color:var(--muted);
+  padding:30px;
+}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:25px 0;
+  margin-top:50px;
+  color:#777;
+  font-size:12px;
+}
+
+@media(max-width:700px){
+
+  .user-name{
+    display:none;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+  .card{
+    padding:20px;
+  }
+
+  .hero{
+    padding:45px 0 30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+
+    <div class="logo">
+      WED <span>STUDIOS</span>
+    </div>
+
+    <div class="user-area">
+
+      <div class="user-name">
+        <strong id="displayName">Staff</strong>
+        <small id="displayRole">Team Member</small>
+      </div>
+
+      <button class="logout" onclick="logout()">
+        Logout
+      </button>
+
+    </div>
+
+  </div>
+</header>
+
+
+<main class="container">
+
+  <section class="hero">
+
+    <div class="eyebrow">
+      Staff Portal
+    </div>
+
+    <h1>
+      Welcome, <span id="welcomeName">Team Member</span>
+    </h1>
+
+    <p>
+      Add your completed work and keep track of your monthly earnings.
+    </p>
+
+  </section>
+
+
+  <!-- STATS -->
+
+  <section class="stats">
+
+    <div class="stat">
+      <small>Total Work</small>
+      <strong id="totalWork">0</strong>
+    </div>
+
+    <div class="stat">
+      <small>This Month</small>
+      <strong id="monthWork">0</strong>
+    </div>
+
+    <div class="stat">
+      <small>Total Amount</small>
+      <strong id="totalAmount">₹0</strong>
+    </div>
+
+  </section>
+
+
+  <!-- ADD WORK -->
+
+  <section class="card">
+
+    <div class="card-title">
+      Add New Work
+    </div>
+
+    <form id="workForm">
+
+      <div class="form-grid">
+
+        <div class="field">
+          <label>Date</label>
+          <input type="date" id="workDate" required>
+        </div>
+
+        <div class="field">
+          <label>Client Name</label>
+          <input
+            type="text"
+            id="client"
+            placeholder="Client name"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label>Work Type</label>
+
+          <select id="workType" required>
+            <option value="">Select Work Type</option>
+            <option>Video Editing</option>
+            <option>Cinematic Video</option>
+            <option>Wedding Film</option>
+            <option>Highlight Video</option>
+            <option>Traditional Video</option>
+            <option>Photo Editing</option>
+            <option>Album Design</option>
+            <option>Other</option>
+          </select>
+
+        </div>
+
+        <div class="field">
+          <label>Amount</label>
+
+          <input
+            type="number"
+            id="amount"
+            placeholder="₹ Amount"
+            min="0"
+            required
+          >
+
+        </div>
+
+        <div class="field full">
+          <label>Project / Work Name</label>
+
+          <input
+            type="text"
+            id="project"
+            placeholder="Example: Rahul & Priya Wedding Highlight"
+            required
+          >
+
+        </div>
+
+        <div class="field full">
+          <label>Description</label>
+
+          <textarea
+            id="description"
+            placeholder="Describe the work..."
+          ></textarea>
+
+        </div>
+
+        <div class="field">
+          <label>Status</label>
+
+          <select id="status">
+            <option>Completed</option>
+            <option>Pending</option>
+            <option>Revision</option>
+          </select>
+
+        </div>
+
+      </div>
+
+      <button class="save-btn" type="submit">
+        Save Work
+      </button>
+
+      <div id="successMessage" class="message success">
+        Work saved successfully.
+      </div>
+
+      <div id="errorMessage" class="message error">
+        Something went wrong.
+      </div>
+
+    </form>
+
+  </section>
+
+
+  <!-- MY WORK -->
+
+  <section class="card">
+
+    <div class="card-title">
+      My Work
+    </div>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Client</th>
+            <th>Project</th>
+            <th>Work Type</th>
+            <th>Status</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+
+        <tbody id="workTable">
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <div id="emptyMessage" class="empty">
+      No work added yet.
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div class="container">
+    © 2026 Wed Studios — Staff Portal
+  </div>
+
+</footer>
+
+
+<script>
+
+/* ---------------------------------------
+   CHECK LOGIN
+--------------------------------------- */
+
+const storedUser =
+  sessionStorage.getItem("wedStudiosUser");
+
+if(!storedUser){
+
+  window.location.href = "/user-login.html";
+
+}
+
+let currentUser = null;
+
+try{
+
+  currentUser = JSON.parse(storedUser);
+
+}catch(error){
+
+  sessionStorage.removeItem("wedStudiosUser");
+
+  window.location.href = "/user-login.html";
+
+}
+
+
+/* ---------------------------------------
+   USER INFORMATION
+--------------------------------------- */
+
+if(currentUser){
+
+  document.getElementById("displayName").textContent =
+    currentUser.name;
+
+  document.getElementById("displayRole").textContent =
+    currentUser.role;
+
+  document.getElementById("welcomeName").textContent =
+    currentUser.name;
+
+}
+
+
+/* ---------------------------------------
+   TEMPORARY LOCAL DATA
+   ---------------------------------------
+
+   अभी testing के लिए browser storage.
+
+   अगले step में यही data Cloudflare D1
+   database में save होगा.
+--------------------------------------- */
+
+let works =
+  JSON.parse(
+    localStorage.getItem(
+      "wedStudiosWorks_" + currentUser.username
+    ) || "[]"
+  );
+
+
+/* ---------------------------------------
+   DEFAULT DATE
+--------------------------------------- */
+
+document.getElementById("workDate").value =
+  new Date().toISOString().split("T")[0];
+
+
+/* ---------------------------------------
+   SAVE WORK
+--------------------------------------- */
+
+document.getElementById("workForm")
+.addEventListener("submit", function(e){
+
+  e.preventDefault();
+
+  const work = {
+
+    id: Date.now(),
+
+    date:
+      document.getElementById("workDate").value,
+
+    client:
+      document.getElementById("client").value.trim(),
+
+    workType:
+      document.getElementById("workType").value,
+
+    amount:
+      Number(document.getElementById("amount").value),
+
+    project:
+      document.getElementById("project").value.trim(),
+
+    description:
+      document.getElementById("description").value.trim(),
+
+    status:
+      document.getElementById("status").value,
+
+    username:
+      currentUser.username
+
+  };
+
+
+  works.push(work);
+
+
+  localStorage.setItem(
+    "wedStudiosWorks_" + currentUser.username,
+    JSON.stringify(works)
+  );
+
+
+  document.getElementById("successMessage")
+    .style.display = "block";
+
+  document.getElementById("errorMessage")
+    .style.display = "none";
+
+
+  this.reset();
+
+  document.getElementById("workDate").value =
+    new Date().toISOString().split("T")[0];
+
+  renderWorks();
+
+
+  setTimeout(() => {
+
+    document.getElementById("successMessage")
+      .style.display = "none";
+
+  },3000);
+
+});
+
+
+/* ---------------------------------------
+   RENDER WORK
+--------------------------------------- */
+
+function renderWorks(){
+
+  const table =
+    document.getElementById("workTable");
+
+  const empty =
+    document.getElementById("emptyMessage");
+
+  table.innerHTML = "";
+
+
+  if(works.length === 0){
+
+    empty.style.display = "block";
+
+  }else{
+
+    empty.style.display = "none";
+
+  }
+
+
+  [...works]
+    .sort((a,b) =>
+      new Date(b.date) - new Date(a.date)
+    )
+    .forEach(work => {
+
+      const row =
+        document.createElement("tr");
+
+      row.innerHTML = `
+
+        <td>${formatDate(work.date)}</td>
+
+        <td>${escapeHtml(work.client)}</td>
+
+        <td>${escapeHtml(work.project)}</td>
+
+        <td>${escapeHtml(work.workType)}</td>
+
+        <td>${escapeHtml(work.status)}</td>
+
+        <td class="amount">
+          ₹${Number(work.amount).toLocaleString("en-IN")}
+        </td>
+
+      `;
+
+      table.appendChild(row);
+
+    });
+
+
+  updateStats();
+
+}
+
+
+/* ---------------------------------------
+   STATISTICS
+--------------------------------------- */
+
+function updateStats(){
+
+  const total =
+    works.reduce(
+      (sum,w) => sum + Number(w.amount || 0),
+      0
+    );
+
+
+  const now = new Date();
+
+  const month =
+    now.getMonth();
+
+  const year =
+    now.getFullYear();
+
+
+  const monthWorks =
+    works.filter(w => {
+
+      const d = new Date(w.date);
+
+      return (
+        d.getMonth() === month &&
+        d.getFullYear() === year
+      );
+
+    });
+
+
+  const monthAmount =
+    monthWorks.reduce(
+      (sum,w) => sum + Number(w.amount || 0),
+      0
+    );
+
+
+  document.getElementById("totalWork")
+    .textContent = works.length;
+
+  document.getElementById("monthWork")
+    .textContent =
+      monthWorks.length;
+
+  document.getElementById("totalAmount")
+    .textContent =
+      "₹" + total.toLocaleString("en-IN");
+
+}
+
+
+/* ---------------------------------------
+   DATE FORMAT
+--------------------------------------- */
+
+function formatDate(date){
+
+  if(!date) return "-";
+
+  const d = new Date(date);
+
+  return d.toLocaleDateString(
+    "en-IN",
+    {
+      day:"2-digit",
+      month:"short",
+      year:"numeric"
+    }
+  );
+
+}
+
+
+/* ---------------------------------------
+   SECURITY HELPER
+--------------------------------------- */
+
+function escapeHtml(value){
+
+  const div =
+    document.createElement("div");
+
+  div.textContent =
+    value ?? "";
+
+  return div.innerHTML;
+
+}
+
+
+/* ---------------------------------------
+   LOGOUT
+--------------------------------------- */
+
+function logout(){
+
+  sessionStorage.removeItem(
+    "wedStudiosUser"
+  );
+
+  window.location.href =
+    "/user-login.html";
+
+}
+
+
+/* ---------------------------------------
+   INITIAL LOAD
+--------------------------------------- */
+
+renderWorks();
+
+</script>
+
+</body>
+</html>
+```
