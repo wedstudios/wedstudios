@@ -1,1 +1,1204 @@
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin | Wed Studios</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0909;
+      --card: #131010;
+      --card-hover: #191515;
+      --text: #f7f1e9;
+      --muted: #a69d96;
+      --gold: #d7b37a;
+      --gold-hover: #e5c898;
+      --line: rgba(255,255,255,.1);
+      --danger: #d87979;
+      --font-serif: "Cormorant Garamond", Georgia, serif;
+      --font-sans: "DM Sans", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top right, rgba(215,179,122,.08), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* LOGIN */
+
+    .login-screen {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 25px;
+    }
+
+    .login-box {
+      width: min(420px, 100%);
+      background: rgba(19,16,16,.95);
+      border: 1px solid var(--line);
+      padding: 45px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.45);
+    }
+
+    .logo {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 34px;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .login-subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 35px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .field label {
+      display: block;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 10px;
+      margin-bottom: 8px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      background: #0d0c0c;
+      border: 1px solid var(--line);
+      color: var(--text);
+      padding: 13px 14px;
+      outline: none;
+    }
+
+    .field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .login-btn,
+    .primary-btn {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: #111;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-top: 8px;
+    }
+
+    .login-btn:hover,
+    .primary-btn:hover {
+      background: var(--gold-hover);
+    }
+
+    .error {
+      color: var(--danger);
+      text-align: center;
+      font-size: 13px;
+      margin-top: 15px;
+      min-height: 20px;
+    }
+
+    /* DASHBOARD */
+
+    .dashboard {
+      display: none;
+      min-height: 100vh;
+    }
+
+    .dashboard.active {
+      display: block;
+    }
+
+    .topbar {
+      height: 76px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(10,9,9,.9);
+      backdrop-filter: blur(15px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .top-logo {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      letter-spacing: 2px;
+    }
+
+    .top-logo span {
+      color: var(--gold);
+    }
+
+    .logout-btn {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 9px 18px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .logout-btn:hover {
+      background: var(--gold);
+      color: #111;
+    }
+
+    .dashboard-container {
+      width: min(1200px, 92%);
+      margin: auto;
+      padding: 55px 0 80px;
+    }
+
+    .welcome {
+      margin-bottom: 40px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 10px;
+      margin-bottom: 8px;
+    }
+
+    .welcome h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(42px, 6vw, 68px);
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .welcome p {
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    /* STATS */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 45px;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 25px;
+    }
+
+    .stat small {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 10px;
+    }
+
+    .stat strong {
+      display: block;
+      font-family: var(--font-serif);
+      color: var(--gold);
+      font-size: 38px;
+      margin-top: 5px;
+    }
+
+    /* CARDS */
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 30px;
+    }
+
+    .card.full {
+      grid-column: 1 / -1;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .card h2 {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 500;
+    }
+
+    .card-description {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: -15px;
+      margin-bottom: 22px;
+    }
+
+    /* SHOOT DATES */
+
+    .date-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .date-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 15px;
+      background: #0e0d0d;
+      border: 1px solid var(--line);
+    }
+
+    .date-info strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .date-info span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    .delete-btn {
+      background: transparent;
+      color: var(--danger);
+      border: 1px solid rgba(216,121,121,.35);
+      padding: 6px 10px;
+      font-size: 11px;
+    }
+
+    .delete-btn:hover {
+      background: rgba(216,121,121,.1);
+    }
+
+    /* QUOTATIONS */
+
+    .quote-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .quote-item {
+      background: #0e0d0d;
+      border: 1px solid var(--line);
+      padding: 17px;
+    }
+
+    .quote-item strong {
+      font-size: 14px;
+    }
+
+    .quote-item .amount {
+      color: var(--gold);
+      font-family: var(--font-serif);
+      font-size: 22px;
+      float: right;
+    }
+
+    .quote-item small {
+      display: block;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    /* QUICK LINKS */
+
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .quick-link {
+      padding: 20px;
+      border: 1px solid var(--line);
+      background: #0e0d0d;
+      color: var(--text);
+      text-align: center;
+      text-decoration: none;
+      transition: .25s;
+    }
+
+    .quick-link:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* TOAST */
+
+    .toast {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      background: var(--gold);
+      color: #111;
+      padding: 13px 18px;
+      font-size: 13px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: .3s;
+      z-index: 100;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 850px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card.full {
+        grid-column: auto;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .login-box {
+        padding: 30px 22px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .quick-links {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        padding: 0 4%;
+      }
+
+      .dashboard-container {
+        width: 92%;
+      }
+
+      .welcome h1 {
+        font-size: 45px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= LOGIN ================= -->
+
+  <section class="login-screen" id="loginScreen">
+
+    <div class="login-box">
+
+      <div class="logo">
+        WED <span>STUDIOS</span>
+      </div>
+
+      <p class="login-subtitle">
+        Private Admin Area
+      </p>
+
+      <form id="loginForm">
+
+        <div class="field">
+          <label>Username</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter username"
+            autocomplete="username"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label>Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter password"
+            autocomplete="current-password"
+            required
+          >
+        </div>
+
+        <button class="login-btn" type="submit">
+          Login To Dashboard
+        </button>
+
+        <div class="error" id="loginError"></div>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= DASHBOARD ================= -->
+
+  <section class="dashboard" id="dashboard">
+
+    <header class="topbar">
+
+      <div class="top-logo">
+        WED <span>STUDIOS</span>
+      </div>
+
+      <button class="logout-btn" id="logoutBtn">
+        Logout
+      </button>
+
+    </header>
+
+
+    <main class="dashboard-container">
+
+      <div class="welcome">
+
+        <div class="eyebrow">
+          Admin Dashboard
+        </div>
+
+        <h1>Welcome Back.</h1>
+
+        <p>
+          Manage your Wed Studios workflow from one place.
+        </p>
+
+      </div>
+
+
+      <!-- STATS -->
+
+      <div class="stats">
+
+        <div class="stat">
+          <small>Total Shoots</small>
+          <strong id="totalShoots">0</strong>
+        </div>
+
+        <div class="stat">
+          <small>Upcoming</small>
+          <strong id="upcomingShoots">0</strong>
+        </div>
+
+        <div class="stat">
+          <small>Quotations</small>
+          <strong id="totalQuotes">0</strong>
+        </div>
+
+        <div class="stat">
+          <small>Clients</small>
+          <strong id="totalClients">0</strong>
+        </div>
+
+      </div>
+
+
+      <div class="dashboard-grid">
+
+
+        <!-- ADD SHOOT -->
+
+        <div class="card">
+
+          <div class="card-header">
+            <h2>Add Shoot</h2>
+          </div>
+
+          <p class="card-description">
+            Add your upcoming wedding or photography assignment.
+          </p>
+
+          <form id="shootForm">
+
+            <div class="field">
+              <label>Client Name</label>
+              <input
+                type="text"
+                id="shootClient"
+                placeholder="Client name"
+                required
+              >
+            </div>
+
+            <div class="field">
+              <label>Shoot Date</label>
+              <input
+                type="date"
+                id="shootDate"
+                required
+              >
+            </div>
+
+            <div class="field">
+              <label>Function</label>
+              <select id="shootType">
+                <option>Wedding</option>
+                <option>Engagement</option>
+                <option>Haldi</option>
+                <option>Mehendi</option>
+                <option>Sangeet</option>
+                <option>Pre-Wedding</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <button class="primary-btn" type="submit">
+              Add Shoot
+            </button>
+
+          </form>
+
+        </div>
+
+
+        <!-- ADD QUOTATION -->
+
+        <div class="card">
+
+          <div class="card-header">
+            <h2>New Quotation</h2>
+          </div>
+
+          <p class="card-description">
+            Save a basic quotation for your client.
+          </p>
+
+          <form id="quoteForm">
+
+            <div class="field">
+              <label>Client Name</label>
+              <input
+                type="text"
+                id="quoteClient"
+                placeholder="Client name"
+                required
+              >
+            </div>
+
+            <div class="field">
+              <label>Amount</label>
+              <input
+                type="number"
+                id="quoteAmount"
+                placeholder="₹ Amount"
+                min="0"
+                required
+              >
+            </div>
+
+            <div class="field">
+              <label>Package</label>
+              <select id="quotePackage">
+                <option>Classic</option>
+                <option>Signature</option>
+                <option>Legacy</option>
+                <option>Custom</option>
+              </select>
+            </div>
+
+            <button class="primary-btn" type="submit">
+              Save Quotation
+            </button>
+
+          </form>
+
+        </div>
+
+
+        <!-- SHOOT LIST -->
+
+        <div class="card">
+
+          <div class="card-header">
+            <h2>Shoot Calendar</h2>
+          </div>
+
+          <div class="date-list" id="dateList">
+            <p style="color:#a69d96;font-size:13px;">
+              No shoots added yet.
+            </p>
+          </div>
+
+        </div>
+
+
+        <!-- QUOTATION LIST -->
+
+        <div class="card">
+
+          <div class="card-header">
+            <h2>Recent Quotations</h2>
+          </div>
+
+          <div class="quote-list" id="quoteList">
+            <p style="color:#a69d96;font-size:13px;">
+              No quotations added yet.
+            </p>
+          </div>
+
+        </div>
+
+
+        <!-- QUICK LINKS -->
+
+        <div class="card full">
+
+          <div class="card-header">
+            <h2>Quick Access</h2>
+          </div>
+
+          <div class="quick-links">
+
+            <a class="quick-link" href="/" target="_blank">
+              View Website
+            </a>
+
+            <a class="quick-link" href="/portfolio.html" target="_blank">
+              Portfolio
+            </a>
+
+            <a
+              class="quick-link"
+              href="https://wa.me/918700445435"
+              target="_blank"
+              rel="noopener"
+            >
+              WhatsApp
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </section>
+
+
+  <div class="toast" id="toast">
+    Saved successfully.
+  </div>
+
+
+  <script>
+
+    /*
+      =========================================
+      WED STUDIOS ADMIN
+      =========================================
+
+      IMPORTANT:
+      This is a frontend prototype.
+
+      Change these credentials before using:
+
+      Username: admin
+      Password: WedStudios@2026
+
+      This login is NOT secure authentication.
+      Anyone with access to the source code can
+      potentially discover these credentials.
+    */
+
+    const ADMIN_USERNAME = "admin";
+    const ADMIN_PASSWORD = "WedStudios@2026";
+
+
+    /* ================= LOGIN ================= */
+
+    const loginScreen = document.getElementById("loginScreen");
+    const dashboard = document.getElementById("dashboard");
+    const loginForm = document.getElementById("loginForm");
+    const loginError = document.getElementById("loginError");
+
+
+    function showDashboard() {
+
+      loginScreen.style.display = "none";
+      dashboard.classList.add("active");
+
+      renderShoots();
+      renderQuotes();
+      updateStats();
+
+    }
+
+
+    function showLogin() {
+
+      loginScreen.style.display = "grid";
+      dashboard.classList.remove("active");
+
+    }
+
+
+    loginForm.addEventListener("submit", function(e) {
+
+      e.preventDefault();
+
+      const username =
+        document.getElementById("username").value.trim();
+
+      const password =
+        document.getElementById("password").value;
+
+
+      if (
+        username === ADMIN_USERNAME &&
+        password === ADMIN_PASSWORD
+      ) {
+
+        sessionStorage.setItem(
+          "wedStudiosAdmin",
+          "true"
+        );
+
+        loginError.textContent = "";
+
+        showDashboard();
+
+      } else {
+
+        loginError.textContent =
+          "Incorrect username or password.";
+
+      }
+
+    });
+
+
+    /* ================= LOGOUT ================= */
+
+    document
+      .getElementById("logoutBtn")
+      .addEventListener("click", function() {
+
+        sessionStorage.removeItem(
+          "wedStudiosAdmin"
+        );
+
+        showLogin();
+
+      });
+
+
+    /* ================= STORAGE ================= */
+
+    function getShoots() {
+
+      return JSON.parse(
+        localStorage.getItem("wedStudiosShoots") || "[]"
+      );
+
+    }
+
+
+    function saveShoots(shoots) {
+
+      localStorage.setItem(
+        "wedStudiosShoots",
+        JSON.stringify(shoots)
+      );
+
+    }
+
+
+    function getQuotes() {
+
+      return JSON.parse(
+        localStorage.getItem("wedStudiosQuotes") || "[]"
+      );
+
+    }
+
+
+    function saveQuotes(quotes) {
+
+      localStorage.setItem(
+        "wedStudiosQuotes",
+        JSON.stringify(quotes)
+      );
+
+    }
+
+
+    /* ================= ADD SHOOT ================= */
+
+    document
+      .getElementById("shootForm")
+      .addEventListener("submit", function(e) {
+
+        e.preventDefault();
+
+        const shoots = getShoots();
+
+        shoots.push({
+
+          id: Date.now(),
+
+          client:
+            document.getElementById("shootClient").value.trim(),
+
+          date:
+            document.getElementById("shootDate").value,
+
+          type:
+            document.getElementById("shootType").value
+
+        });
+
+        saveShoots(shoots);
+
+        this.reset();
+
+        renderShoots();
+        updateStats();
+
+        showToast("Shoot added successfully.");
+
+      });
+
+
+    /* ================= RENDER SHOOTS ================= */
+
+    function renderShoots() {
+
+      const list =
+        document.getElementById("dateList");
+
+      const shoots = getShoots()
+        .sort((a,b) =>
+          new Date(a.date) - new Date(b.date)
+        );
+
+
+      if (!shoots.length) {
+
+        list.innerHTML =
+          `<p style="color:#a69d96;font-size:13px;">
+            No shoots added yet.
+          </p>`;
+
+        return;
+
+      }
+
+
+      list.innerHTML = shoots.map(shoot => `
+
+        <div class="date-item">
+
+          <div class="date-info">
+
+            <strong>
+              ${escapeHTML(shoot.client)}
+            </strong>
+
+            <span>
+              ${formatDate(shoot.date)}
+              ·
+              ${escapeHTML(shoot.type)}
+            </span>
+
+          </div>
+
+          <button
+            class="delete-btn"
+            onclick="deleteShoot(${shoot.id})"
+          >
+            Delete
+          </button>
+
+        </div>
+
+      `).join("");
+
+    }
+
+
+    /* ================= DELETE SHOOT ================= */
+
+    function deleteShoot(id) {
+
+      const shoots =
+        getShoots().filter(shoot => shoot.id !== id);
+
+      saveShoots(shoots);
+
+      renderShoots();
+      updateStats();
+
+      showToast("Shoot deleted.");
+
+    }
+
+
+    /* ================= ADD QUOTATION ================= */
+
+    document
+      .getElementById("quoteForm")
+      .addEventListener("submit", function(e) {
+
+        e.preventDefault();
+
+        const quotes = getQuotes();
+
+        quotes.unshift({
+
+          id: Date.now(),
+
+          client:
+            document.getElementById("quoteClient").value.trim(),
+
+          amount:
+            document.getElementById("quoteAmount").value,
+
+          package:
+            document.getElementById("quotePackage").value,
+
+          date:
+            new Date().toISOString()
+
+        });
+
+        saveQuotes(quotes);
+
+        this.reset();
+
+        renderQuotes();
+        updateStats();
+
+        showToast("Quotation saved.");
+
+      });
+
+
+    /* ================= RENDER QUOTES ================= */
+
+    function renderQuotes() {
+
+      const list =
+        document.getElementById("quoteList");
+
+      const quotes = getQuotes();
+
+
+      if (!quotes.length) {
+
+        list.innerHTML =
+          `<p style="color:#a69d96;font-size:13px;">
+            No quotations added yet.
+          </p>`;
+
+        return;
+
+      }
+
+
+      list.innerHTML = quotes
+        .slice(0, 10)
+        .map(quote => `
+
+          <div class="quote-item">
+
+            <span class="amount">
+              ₹${Number(quote.amount).toLocaleString("en-IN")}
+            </span>
+
+            <strong>
+              ${escapeHTML(quote.client)}
+            </strong>
+
+            <small>
+              ${escapeHTML(quote.package)}
+              ·
+              ${formatDate(quote.date)}
+            </small>
+
+          </div>
+
+        `).join("");
+
+    }
+
+
+    /* ================= STATS ================= */
+
+    function updateStats() {
+
+      const shoots = getShoots();
+      const quotes = getQuotes();
+
+      const today = new Date();
+      today.setHours(0,0,0,0);
+
+
+      const upcoming =
+        shoots.filter(shoot =>
+          new Date(shoot.date) >= today
+        );
+
+
+      const clients = new Set([
+        ...shoots.map(x => x.client.toLowerCase()),
+        ...quotes.map(x => x.client.toLowerCase())
+      ]);
+
+
+      document.getElementById("totalShoots")
+        .textContent = shoots.length;
+
+      document.getElementById("upcomingShoots")
+        .textContent = upcoming.length;
+
+      document.getElementById("totalQuotes")
+        .textContent = quotes.length;
+
+      document.getElementById("totalClients")
+        .textContent = clients.size;
+
+    }
+
+
+    /* ================= HELPERS ================= */
+
+    function formatDate(dateString) {
+
+      const date = new Date(dateString);
+
+      return date.toLocaleDateString(
+        "en-IN",
+        {
+          day: "2-digit",
+          month: "short",
+          year: "numeric"
+        }
+      );
+
+    }
+
+
+    function escapeHTML(value) {
+
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+    }
+
+
+    function showToast(message) {
+
+      const toast =
+        document.getElementById("toast");
+
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2500);
+
+    }
+
+
+    /* ================= AUTO LOGIN ================= */
+
+    if (
+      sessionStorage.getItem("wedStudiosAdmin") === "true"
+    ) {
+
+      showDashboard();
+
+    }
+
+  </script>
+
+</body>
+</html>
+```
